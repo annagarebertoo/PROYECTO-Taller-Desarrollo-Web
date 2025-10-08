@@ -411,3 +411,257 @@ body{
 @media (max-width: 640px){
   .auth-grid{ grid-template-columns: 1fr; }
 }
+
+/* ====== Header (según mockup) ====== */
+.site-header{
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #ffffffaa;
+}
+.header-inner{
+  display: grid; align-items: center;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem; padding: .6rem 0;
+}
+.brand .logo{ height: 42px; display:block; }
+
+.header-center{
+  text-align: center; font-weight: 700; color:#6a6a6a;
+}
+
+.header-actions{ display: flex; align-items: center; gap: .6rem; }
+
+/* Botones inicio sesion*/
+.hdr-btn{
+  padding: .6rem 1rem; border-radius: 999px;
+  font-weight: 800; line-height: 1; border: none; text-decoration: none;
+  box-shadow: 0 6px 16px #00000018;
+}
+.btn-login{ background:#FFC61B; color:#1c0f0f;  }
+.btn-register{ background:#FFC61B; color:#1c0f0f; }
+.hdr-btn:hover{ transform: translateY(-1px); filter: brightness(.98); }
+
+/* Hamburguesa */
+.hamburger{
+  background: #fff; border: 1px solid #efd9f1; border-radius: 12px;
+  height: 36px; width: 36px; font-size: 20px; cursor: pointer;
+  display: grid; place-items: center; box-shadow: 0 6px 16px #00000010;
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .header-center{ display:none; }
+  .hdr-btn{ padding: .5rem .8rem; }
+  .brand .logo{ height: 36px; }
+}
+
+/* ====== HEADER CORRECTO (como imagen 1) ====== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* contenedor del header */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  gap: 2rem;
+}
+
+/* logo */
+.logo {
+  height: 48px;
+}
+
+/* menú principal */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #f24a8e;
+}
+
+/* subrayado rosa del activo */
+.main-nav a.active {
+  color: #f24a8e;
+  font-weight: 700;
+}
+
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #f24a8e;
+  border-radius: 4px;
+}
+
+/* sección derecha */
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  color: #5f5f5f;
+}
+
+.btn.btn-outline {
+  background: #ffc61b;
+  color: #1b1b1b;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 6px 14px #0000001a;
+}
+
+.btn.btn-outline:hover {
+  filter: brightness(0.95);
+}
+
+/* responsive */
+@media (max-width: 850px) {
+  .main-nav {
+    display: none;
+  }
+}
+
+/* Contenedor global (igual que en Inicio) */
+.container{
+  max-width: 1220px; /* mismo ancho visual que el mockup */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Layout Tu Paquete */
+.pkg-layout{
+  display:grid;
+  grid-template-columns: 360px 1fr; /* carrito fijo + panel flexible */
+  gap: 18px;
+  padding: 20px 0 36px;
+}
+
+/* Panel derecho: 3 columnas estables */
+.accordion{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+/* Tarjetas fantasma */
+.card-ghost{
+  background: rgba(255,255,255,.9);
+  border:1px solid #ffffffaa;
+  border-radius:20px;
+  box-shadow:0 14px 36px #00000012;
+}
+
+/* Carrito */
+.cart{ padding: 18px 22px; }
+.cart h3{ margin:4px 0 10px; }
+.cart hr{ border:0; border-top:1px solid #e8d9ee; margin:8px 0 12px; }
+.total-row{ display:flex; justify-content:space-between; align-items:center; font-weight:800; margin:12px 0 14px; }
+.btn-contact{ display:block; text-align:center; background:#FFC61B; color:#1b1b1b; font-weight:800; border-radius:12px; padding:.85rem 1rem; }
+
+/* Acordeón */
+.acc{ overflow:hidden; }
+.acc__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; font-weight:800; cursor:pointer;
+}
+.acc__body{
+  padding:12px 14px 16px;
+  max-height: 66vh;            /* evita que se “estire” infinito */
+  overflow:auto;               /* scroll interno si hay muchas */
+}
+
+/* Pastillas de opciones */
+.pill{
+  width: 100%;
+  background:#ff4b86;
+  color:#fff;
+  border-radius:12px;
+  padding:12px 12px 10px;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:8px;
+  align-items:center;
+  margin:10px 0;
+  box-shadow:0 8px 18px #00000015;
+}
+.pill .line1{ font-weight:800; }
+.pill .sub{ font-size:.85rem; opacity:.95; text-decoration:underline; display:inline-block; margin-top:2px; }
+.pill .badge-dst{ background:#fff; color:#ff4b86; border-radius:7px; padding:2px 6px; font-size:.8rem; font-weight:800; margin-left:6px; }
+.pill .price{ grid-column:1 / -1; justify-self:end; font-weight:800; }
+
+/* Botones dentro de pastillas (añadir / quitar / seleccionar) */
+.pill .btn-add, .pill .btn-remove{
+  border:0; border-radius:8px; cursor:pointer; padding:.35rem .6rem; font-weight:800; color:#fff;
+}
+.pill .btn-add{ background:#38c793; }   /* verde */
+.pill .btn-remove{ background:#c73c6b; }/* rojo */
+
+/* Responsive: 2 columnas y luego 1 */
+@media (max-width: 1100px){
+  .accordion{ grid-template-columns: repeat(2, minmax(260px,1fr)); }
+}
+@media (max-width: 780px){
+  .pkg-layout{ grid-template-columns: 1fr; }
+  .accordion{ grid-template-columns: 1fr; }
+}
+
+/* Normalizar botones de acción dentro de .pill  */
+.pill .actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;       /* si falta ancho, se bajan sin salirse */
+  justify-content:flex-end;
+  align-items:center;
+}
+
+/* Mismas dimensiones para ambas variantes de nombres */
+.pill .btn-add,
+.pill .btn-remove,
+.pill .btn-ok,
+.pill .btn-x{
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  padding:.34rem .64rem;   /* más cómodo y parejo */
+  line-height:1;           /* evita alturas raras */
+  font-size:.9rem;
+  font-weight:800;
+  color:#fff;
+  white-space:nowrap;      /* no cortar texto del botón */
+  flex:0 0 auto;           /* no se estiran */
+  box-sizing:border-box;
+}
+
+/* Colores unificados */
+.pill .btn-add,
+.pill .btn-ok{ background:#38c793; }   /* verde */
+.pill .btn-remove,
+.pill .btn-x { background:#c73c6b; }   /* rojo */
+

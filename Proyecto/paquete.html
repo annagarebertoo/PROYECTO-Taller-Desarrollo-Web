@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnSolet • Tu Paquete</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ====== Estilos mínimos propios de Tu Paquete (podés moverlos a style.css) ====== */
+    .pkg-layout{display:grid;grid-template-columns:360px 1fr;gap:1.5rem;padding:1.5rem 0 2.5rem;}
+    .card-ghost{background:rgba(255,255,255,.9);border:1px solid #ffffffaa;border-radius:22px;box-shadow:0 14px 36px #00000014;}
+    .cart{padding:1rem 1.25rem;}
+    .cart h3{margin:.3rem 0 1rem;}
+    .cart hr{border:0;border-top:1px solid #e8d9ee;margin:.75rem 0 1rem;}
+    .cart .muted{color:#6d6d6d;}
+    .cart .total-row{display:flex;justify-content:space-between;align-items:center;font-weight:800;margin:.8rem 0 1rem;}
+    .btn-contact{background:#FFC61B;color:#1b1b1b;font-weight:800;border-radius:12px;padding:.9rem 1.1rem;display:block;text-align:center;}
+    .options{padding:1rem 1.25rem;}
+    .accordion{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+    .acc{background:rgba(255,255,255,.92);border:1px solid #f1e6f5;border-radius:18px;overflow:hidden}
+    .acc__head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1rem;font-weight:800;cursor:pointer}
+    .acc__body{padding:.85rem 1rem 1rem;display:none}
+    .acc.is-open .acc__body{display:block}
+    .pill{background:#ff4b86;color:#fff;border-radius:10px;padding:.55rem .7rem;margin:.45rem 0;display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center}
+    .pill .line1{font-weight:800}
+    .pill .sub{font-size:.85rem;opacity:.9;text-decoration:underline;margin-top:.15rem}
+    .pill .actions{display:flex;gap:.35rem;align-items:center}
+    .pill .btn-x, .pill .btn-ok{border:0;border-radius:8px;cursor:pointer;padding:.2rem .45rem;font-weight:800;color:#fff}
+    .pill .btn-x{background:#c73c6b}
+    .pill .btn-ok{background:#38c793}
+    .badge-dst{background:#fff;color:#ff4b86;border-radius:6px;padding:.1rem .4rem;margin-left:.35rem;font-size:.8rem;font-weight:800}
+    .empty{color:#8a8a8a}
+    @media (max-width: 1080px){ .accordion{grid-template-columns:1fr} .pkg-layout{grid-template-columns:1fr} }
+
+    /* Botón añadir / quitar dentro de las pastillas */
+.pill .btn-add, .pill .btn-remove{
+  border:0; border-radius:8px; cursor:pointer; padding:.35rem .6rem;
+  font-weight:800; color:#fff;
+}
+.pill .btn-add{ background:#38c793; }     /* verde */
+.pill .btn-remove{ background:#c73c6b; }  /* rojo */
+.pill .price{ justify-self:end; font-weight:800; }
+.cart ul{ margin:.2rem 0 .6rem 1rem; }
+.cart .empty{ color:#8a8a8a; }
+
+  </style>
+</head>
+<body>
+  <!-- ====== Header / Navbar ====== -->
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="./imagenes/ansolet.png" alt="AnSolet logo" class="logo">
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="vuelos.html">Destinos</a>
+      <a class="active" href="paquete.html">Tu Paquete</a>
+      <a href="#">Ayuda</a>
+    </nav>
+
+    <div class="right-nav">
+      <span class="minor">Idioma ES | USD</span>
+      <!-- usar MISMAS clases que en Inicio -->
+      <a id="openLogin"     class="btn btn-login"    href="#">Iniciar sesión</a>
+      <a id="openRegister"  class="btn btn-register" href="#">Registrarse</a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ====== Contenido ====== -->
+  <main class="container pkg-layout">
+    <!-- Carrito -->
+    <aside class="card-ghost cart">
+      <h3>Tu carrito</h3>
+<hr>
+<div id="cartLines" class="muted">
+  <div>Pack Cancún 7 noches:</div>
+  <div>Vuelo ida 01/01</div>
+  <div>Vuelo vuelta 08/01</div>
+
+  <div style="margin-top:.6rem;"><strong>Hotel</strong></div>
+  <div id="cartHotel" class="empty">—</div>
+
+  <div style="margin-top:.6rem;"><strong>Traslados</strong></div>
+  <div id="cartTransfer" class="empty">—</div>
+
+  <div style="margin-top:.6rem;"><strong>Experiencias</strong></div>
+  <ul id="cartExpList"></ul>
+  <div id="cartExpEmpty" class="empty">—</div>
+</div>
+
+<div class="total-row">
+  <span>Total</span>
+  <span id="cartTotal">US$ 0</span>
+</div>
+<a href="#" class="btn-contact">Contactar con un asesor</a>
+
+    </aside>
+
+    <!-- Opciones -->
+    <section class="card-ghost options">
+      <div class="accordion">
+
+        <!-- Hoteles -->
+        <article class="acc is-open" id="accHotels">
+          <header class="acc__head">
+            <span>Hotel</span>
+            <span>⌄</span>
+          </header>
+          <div class="acc__body" id="listHotels">
+            <!-- JS inyecta 4 hoteles -->
+          </div>
+        </article>
+
+        <!-- Traslados -->
+        <article class="acc" id="accTransfers">
+          <header class="acc__head">
+            <span>Traslados</span>
+            <span>⌄</span>
+          </header>
+          <div class="acc__body" id="listTransfers">
+            <!-- JS inyecta traslados -->
+          </div>
+        </article>
+
+        <!-- Experiencias -->
+        <article class="acc" id="accExp">
+          <header class="acc__head">
+            <span>Excursiones / Experiencias</span>
+            <span>⌄</span>
+          </header>
+          <div class="acc__body" id="listExp">
+            <!-- JS inyecta experiencias -->
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social">
+        <a href="#"><img src="./imagenes/twitter.png" class="social-icon" alt="Twitter"></a>
+        <a href="#"><img src="./imagenes/facebook.png" class="social-icon" alt="Facebook"></a>
+        <a href="#"><img src="./imagenes/instagram.png" class="social-icon" alt="Instagram"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- (Si ya tenés los modales login/registro en index, podés copiarlos acá o quitar estos ids del header) -->
+
+  <script>
+  // ====== Datos ======
+  const hotels = [
+    { id:'h1', name:'Soneva Jani – Overwater Villas', dst:'Maldivas',  stars:5, price:1850 },
+    { id:'h2', name:'Zafiro Palace Alcudia',          dst:'Mallorca',  stars:5, price: 420 },
+    { id:'h3', name:'Canaves Oia Suites',             dst:'Santorini', stars:5, price: 980 },
+    { id:'h4', name:'Marriott Mena House',            dst:'Egipto',    stars:5, price: 360 },
+  ];
+  const transfers = [
+    { id:'t1', name:'Shuttle compartido',                price: 25 },
+    { id:'t2', name:'Auto sedán privado',                price: 60 },
+    { id:'t3', name:'Minivan (hasta 6 pax)',             price: 90 },
+    { id:'t4', name:'Servicio premium (auto ejecutivo)', price:120 },
+  ];
+  const experiences = [
+    { id:'e1', name:'Maldivas · Snorkel safari en arrecifes',  price:140 },
+    { id:'e2', name:'Mallorca · Cuevas del Drach + concierto', price: 65 },
+    { id:'e3', name:'Santorini · Atardecer en Oia + cata',     price:110 },
+    { id:'e4', name:'Egipto · Pirámides + Esfinge con guía',   price: 85 },
+  ];
+
+  // ====== Estado del carrito ======
+  const cart = { hotel:null, transfer:null, exp:[] }; // exp = array de experiencias
+
+  // Helpers
+  const $  = (s) => document.querySelector(s);
+  const fmt = (n) => `US$ ${Number(n||0).toLocaleString('en-US')}`;
+
+  // ====== Render de pastillas ======
+  function renderPill(item, group){
+    const pill = document.createElement('div');
+    pill.className = 'pill';
+    pill.dataset.group = group;
+    pill.dataset.id = item.id;
+
+    // texto
+    const title = document.createElement('div');
+    title.innerHTML = `
+      <div class="line1">${item.name}${item.dst ? ` <span class="badge-dst">${item.dst}</span>` : ''}${item.stars ? ` • ${'★'.repeat(item.stars)}` : ''}</div>
+      <a href="#" class="sub">Más información</a>
+    `;
+
+    // acciones
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+
+    // Hotel = selección única con ✔ / ✕
+    if(group === 'hotel'){
+      const ok = document.createElement('button');
+      ok.type='button'; ok.className='btn-add'; ok.textContent='Seleccionar';
+      const rm = document.createElement('button');
+      rm.type='button'; rm.className='btn-remove'; rm.textContent='Quitar';
+      actions.append(ok, rm);
+    }
+
+    // Transfer/Experiencia = Añadir / Quitar
+    if(group === 'transfer' || group === 'exp'){
+      const add = document.createElement('button');
+      add.type='button'; add.className='btn-add'; add.textContent='Añadir';
+      const rm  = document.createElement('button');
+      rm.type='button'; rm.className='btn-remove'; rm.textContent='Quitar';
+      actions.append(add, rm);
+    }
+
+    // precio
+    const price = document.createElement('div');
+    price.className = 'price minor';
+    price.textContent = fmt(item.price);
+
+    pill.append(title, actions, price);
+    return pill;
+  }
+
+  function mountList(container, data, group){
+    container.innerHTML = '';
+    data.forEach(it => container.appendChild( renderPill(it, group) ));
+  }
+
+  // ====== Actualizar carrito ======
+  function updateCart(){
+    // Hotel
+    if(cart.hotel){
+      $('#cartHotel').textContent = `${cart.hotel.name} (${cart.hotel.dst}) — ${fmt(cart.hotel.price)}`;
+      $('#cartHotel').classList.remove('empty');
+    } else {
+      $('#cartHotel').textContent = '—';
+      $('#cartHotel').classList.add('empty');
+    }
+
+    // Transfer
+    if(cart.transfer){
+      $('#cartTransfer').textContent = `${cart.transfer.name} — ${fmt(cart.transfer.price)}`;
+      $('#cartTransfer').classList.remove('empty');
+    } else {
+      $('#cartTransfer').textContent = '—';
+      $('#cartTransfer').classList.add('empty');
+    }
+
+    // Experiencias
+    const ul = $('#cartExpList');
+    ul.innerHTML = '';
+    cart.exp.forEach(x => {
+      const li = document.createElement('li');
+      li.textContent = `${x.name} — ${fmt(x.price)}`;
+      ul.appendChild(li);
+    });
+    $('#cartExpEmpty').style.display = cart.exp.length ? 'none' : 'block';
+
+    // Total
+    const total =
+      (cart.hotel?.price || 0) +
+      (cart.transfer?.price || 0) +
+      cart.exp.reduce((s,x)=>s + (x.price||0), 0);
+    $('#cartTotal').textContent = fmt(total);
+  }
+
+  // ====== Lógica de clicks en listas ======
+  function handleSelect(e){
+    const btn = e.target;
+    const pill = btn.closest('.pill'); if(!pill) return;
+    const group = pill.dataset.group;
+    const id    = pill.dataset.id;
+
+    if(group === 'hotel'){
+      if(btn.classList.contains('btn-add')){
+        cart.hotel = hotels.find(h=>h.id===id);
+      } else if(btn.classList.contains('btn-remove')){
+        if(cart.hotel?.id === id) cart.hotel = null;
+      }
+    }
+
+    if(group === 'transfer'){
+      if(btn.classList.contains('btn-add')){
+        cart.transfer = transfers.find(t=>t.id===id); // único
+      } else if(btn.classList.contains('btn-remove')){
+        if(cart.transfer?.id === id) cart.transfer = null;
+      }
+    }
+
+    if(group === 'exp'){
+      if(btn.classList.contains('btn-add')){
+        const item = experiences.find(x=>x.id===id);
+        if(!cart.exp.some(x=>x.id===id)) cart.exp.push(item); // múltiples
+      } else if(btn.classList.contains('btn-remove')){
+        cart.exp = cart.exp.filter(x => x.id !== id);
+      }
+    }
+
+    updateCart();
+  }
+
+  // ====== Acordeón ======
+  document.addEventListener('click', (e)=>{
+    const head = e.target.closest('.acc__head');
+    if(head) head.parentElement.classList.toggle('is-open');
+  });
+
+  // ====== Montaje inicial ======
+  mountList($('#listHotels'),    hotels,      'hotel');
+  mountList($('#listTransfers'), transfers,   'transfer');
+  mountList($('#listExp'),       experiences, 'exp');
+
+  $('#listHotels').addEventListener('click', handleSelect);
+  $('#listTransfers').addEventListener('click', handleSelect);
+  $('#listExp').addEventListener('click', handleSelect);
+
+  updateCart();
+</script>
+
+</body>
+</html>
