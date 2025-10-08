@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="widht-device-widht, initial-scale=1"/>
+    <title>Catalogo de Productos</title>
+    <link href="catalogo.css" type="text/css" rel="stylesheet">
+</head>
+
+<body class="grid-container">
+
+    <aside class="grid-container" arial-label="Filtros de catalogo">
+      <form>
+
+        <fieldset>
+          <legend>Busqueda</legend>
+          <label for="q">Buscar: </label>
+          <input type="text" id="q" name="q" placeholder="producto, palabra clave">
+        </fieldset>
+
+        <fieldset>
+          <legend>Productos</legend>
+          <label class="check"><input type="checkbox" name="prod" value="cabezal"> Cabezal</label>
+        <label class="check"><input type="checkbox" name="prod" value="foco"> Foco con dedos</label>
+        <label class="check"><input type="checkbox" name="prod" value="protector"> Protector Manos</label>
+        <label class="check"><input type="checkbox" name="prod" value="dobok"> Dobok</label>
+        <label class="check"><input type="checkbox" name="prod" value="escudo"> Escudo de potencia</label>
+        </fieldset>
+      </form>
+    </aside>
+
+    <header class="itemMain">
+        <h1>Mi Tienda</h1>
+        <p>Equipamiento y accesorios</p>
+    </header>
+
+   <nav class="item2" aria-label="Navegación principal">
+    <a href="productos.html">Catalogo</a>
+    <a href="">Carrito de Compras</a>
+  </nav>
+
+  <aside class="item3" aria-label="Menú lateral">
+    <h2>Categorías</h2>
+    <ul>
+      <li><a href="#proteccion">Protección</a></li>
+      <li><a href="#indumentaria">Indumentaria</a></li>
+      <li><a href="#iluminacion">Iluminación</a></li>
+      <li><a href="#accesorios">Accesorios</a></li>
+    </ul>
+  </aside>
+
+<main class="itemMain">
+    <div class="item1">
+      <img src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp" alt="Cabezal Cerrado"/>
+      <h3>Cabezal</h3>
+    </div>
+    <div class="item2">
+      <img src="../Ejercicios-JavaScript/images/foco-con-dedos.webp" alt="Foco con dedos"/>
+      <h3>Foco con dedos</h3>
+    </div>
+    <div class="item3">
+      <img src="../Ejercicios-JavaScript/images/protectores-manos.webp" alt="Protector manos"/>
+      <h3>Protector Manos</h3>
+    </div>
+    <div class="item4">
+      <img src="../Ejercicios-JavaScript/images/dobok.webp" alt="Dobok"/>
+      <h3>Dobok</h3>
+    </div>
+    <div class="item5">
+      <img src="../Ejercicios-JavaScript/images/escudo-potencia.webp" alt="Escudo potencia"/>
+      <h3>Escudo de potencia</h3>
+    </div>
+  </main>
+</body>
+</html>

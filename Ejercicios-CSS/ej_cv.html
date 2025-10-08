@@ -1,43 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>CV Nombre Apellido</title>
+  <meta charset="UTF-8">
+  <title>CV Anna Garello Bertorello</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Gugi&family=Merriweather&display=swap" rel="stylesheet">
+
+  <!-- Favicon (ruta relativa) -->
+  <link rel="shortcut icon" href="imagenes/favicon.cv.jpg">
+
+  <!-- === HOJA DE ESTILOS INCRUSTADA === -->
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f9d8f9, #d9e7ff);
+    }
+    div {
+      border: 2px dashed #3a052e;
+      margin: 10px;
+      padding: 5px 30px;
+      border-radius: 15px;
+      box-shadow: 4px 6px 8px rgba(53, 8, 48, 0.4);
+      background-color: rgba(255,255,255,0.85); /* color plano con opacidad */
+    }
+    #principal {
+      width: 80px;
+      float: left;
+      border-radius: 50%; /* imagen circular */
+      margin-right: 10px;
+    }
+    div.especial h3 {
+      font-family: 'Merriweather', serif;
+      text-shadow: 2px 2px 6px rgba(41, 3, 36, 0.5);
+    }
+    h1, h2, h3, h4 {
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3); /* sombras a títulos */
+    }
+    p, span {
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2); /* sombras a textos */
+    }
+  </style>
 </head>
 <body>
 
 <div>
-    <h1>Nombre Alumno</h1>
-    <h2>Ing. en Computacion</h2>
+  <img id="principal" src="imagenes/icono_usuario.jpg" alt="Foto de perfil">
+  <h1>Anna Garello Bertorello</h1>
+  <h2>Ing. en INFORMATICA</h2>
+</div>
+
+<div class="especial">
+  <h3>Datos Personales</h3>
+  <p><span>Fecha de Nacimiento:</span> 30/05/2006</p>
+  <p><span>Email:</span> 2403599@ucc.edu.ar</p>
 </div>
 
 <div>
-    <h3>Datos Personales</h3>
-    <p><span>Fecha de Nacimiento:</span> dd/mm/aaaa</p>
-    <p><span>Email:</span> email@email.com</p>
+  <h3>Formación Académica</h3>
+  <p><span>Carrera:</span> Ingeniería Informática</p>
+  <p><span>Universidad:</span> Universidad Católica de Córdoba</p>
+  <p><span>Año de Ingreso:</span> 2024</p>
 </div>
 
 <div>
-    <h3>Formacion Academica</h3>
-    <p><span>Carrera:</span> Ingeniería XXXXX</p>
-    <p><span>Universidad:</span> Universidad Católica de Córdoba</p>
-    <p><span>Año de Ingreso:</span> 2018</p>
-</div>
-
-<div>
-    <h3>Cursos</h3>
-
-    <div>
-        <h4>Nombre Curso 1</h4>
-        <p><span>Lugar:</span> Nombre Institución</p>
-        <p><span>Año:</span> XXXX </p>
-    </div>
-
-    <div>
-        <h4>Nombre Curso 2</h4>
-        <p><span>Lugar:</span> Nombre Institución</p>
-        <p><span>Año:</span> XXXX </p>
-    </div>
+  <h3>Cursos</h3>
+  <div>
+    <h4>Taller de Desarrollo Web</h4>
+    <p><span>Lugar:</span> UCC</p>
+    <p><span>Año:</span> 2025</p>
+  </div>
+  <div>
+    <h4>Cálculo II</h4>
+    <p><span>Lugar:</span> UCC</p>
+    <p><span>Año:</span> 2025</p>
+  </div>
 </div>
 
 </body>
