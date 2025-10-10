@@ -558,7 +558,7 @@ body{
 /* Layout Tu Paquete */
 .pkg-layout{
   display:grid;
-  grid-template-columns: 360px 1fr; /* carrito fijo + panel flexible */
+  grid-template-columns: 190px 1fr; /* carrito fijo + panel flexible */
   gap: 18px;
   padding: 20px 0 36px;
 }
@@ -665,3 +665,46 @@ body{
 .pill .btn-remove,
 .pill .btn-x { background:#c73c6b; }   /* rojo */
 
+/* === FIX DEFINITIVO: pastillas con texto vertical === */
+/* Pasamos de grid a flex y definimos anchos claros */
+.pill{
+  display: flex !important;
+  flex-wrap: wrap;               /* si falta ancho, los botones bajan */
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* El PRIMER hijo (título+link) es la zona de texto */
+.pill > :first-child{
+  flex: 1 1 240px;               /* ocupa todo lo disponible, mínimo razonable */
+  min-width: 0;                  /* clave para que pueda encogerse sin romperse */
+  word-break: normal;
+  overflow-wrap: anywhere;       /* por si hay palabras largas */
+}
+
+/* Acciones: no crecen, se mantienen compactas y pueden bajar de línea */
+.pill .actions{
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;               /* bajan si hace falta */
+  justify-content: flex-end;
+}
+
+/* Precio ocupa la fila completa al final */
+.pill .price{
+  margin-left: auto;
+  width: 100%;
+  text-align: right;
+  font-weight: 800;
+}
+
+/* Botones compactos y consistentes */
+.pill .btn-add, .pill .btn-remove, .pill .btn-ok, .pill .btn-x{
+  padding: .34rem .64rem;
+  line-height: 1;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
