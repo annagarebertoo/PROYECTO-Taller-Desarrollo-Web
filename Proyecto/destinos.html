@@ -79,7 +79,7 @@
       .destinos-grid{ grid-template-columns: 1fr; }
     }
    
-  /* 🔒 Override total del fondo en esta página */
+  /*  Override total del fondo en esta página */
   html, body {
     background: #fff !important;         /* reemplaza TODO el background */
     background-image: none !important;   /* anula la imagen */
@@ -93,6 +93,27 @@
     backdrop-filter: none !important;
   }
 </style>
+
+<style>
+  /* Forzar fondo blanco solo en la página de destinos */
+  html, body.page-destinos { 
+    background: #fff !important;
+  }
+
+  /* Apagar la imagen global puesta en body::before */
+  body.page-destinos::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+  }
+
+  /* (opcional) asegurar header y footer planos */
+  header, footer {
+    background: #fff !important;
+    backdrop-filter: none !important;
+  }
+</style>
+
 
 </head>
 <body class="page-destinos">
