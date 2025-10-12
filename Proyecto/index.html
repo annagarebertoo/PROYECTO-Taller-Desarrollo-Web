@@ -17,29 +17,26 @@
        Contiene el logo, la navegación principal y los botones de inicio de sesión / registro
   =============================================== -->
   <header class="site-header">
-    <div class="container nav">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="./imagenes/ansolet.png" alt="AnSolet logo" class="logo">
+    </a>
 
-      <!-- Logo -->
-      <a class="brand" href="index.html">
-        <img src="./imagenes/ansolet.png" alt="AnSolet logo" class="logo">
-      </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html"      class="">Inicio</a>
+      <a href="destinos.html"   class="">Destinos</a>
+      <a href="paquete.html"    class="">Tu Paquete</a>
+      <a href="#">Ayuda</a>
+    </nav>
 
-      <!-- Navegación principal -->
-      <nav class="main-nav" aria-label="Navegación principal">
-        <a href="index.html" class="active">Inicio</a>
-        <a href="vuelos.html">Destinos</a>
-        <a href="paquete.html">Tu Paquete</a>
-        <a href="#">Ayuda</a>
-      </nav>
-
-      <!-- Sección derecha: idioma + botones -->
-      <div class="right-nav">
-        <span class="minor">Idioma ES | USD</span>
-        <a id="openLogin" class="btn hdr-btn btn-login" href="#">Iniciar sesión</a>
-        <a id="openRegister" class="btn hdr-btn btn-register" href="#">Registrarse</a>
-      </div>
+    <div class="right-nav">
+      <span class="minor">Idioma ES | USD</span>
+      <a id="openLogin"    class="btn btn-login"    href="#">Iniciar sesión</a>
+      <a id="openRegister" class="btn btn-register" href="#">Registrarse</a>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- ====== HERO / BUSCADOR DE VUELOS ======
        Sección principal con título, subtítulo y formulario de búsqueda

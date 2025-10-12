@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnSolet • Destinos</title>
+
+  <!-- Fuentes y estilos globales -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+
+  
+
+  <!-- Estilos propios de esta vista -->
+  <style>
+
+
+    /* ====== Grid de Destinos ====== */
+    .destinos{ padding: 26px 0 42px; }
+    .destinos h1{
+      margin: 10px 0 16px;
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+    }
+    .destinos-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    /* ====== Tarjeta de destino ====== */
+    .d-card{
+      background:#fff;
+      border:1px solid #e8d9ee;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px #00000012;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+
+      /* efecto “flotar” */
+      transition: transform .2s ease, box-shadow .2s ease;
+      will-change: transform;
+    }
+    .d-card:hover,
+    .d-card:focus-within{
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px rgba(0,0,0,.18);
+    }
+
+    .d-media{ position: relative; height: 180px; overflow: hidden; }
+    .d-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .d-badge{
+      position:absolute; top:12px; right:12px;
+      background: linear-gradient(90deg,#ff3d77,#ff9a44);
+      color:#fff; font-weight:800; font-size:.82rem;
+      padding:.28rem .55rem; border-radius: 999px;
+      box-shadow: 0 8px 18px #00000018;
+    }
+
+    .d-body{ padding: 14px 16px 8px; }
+    .d-title{ margin:0 0 6px; font-weight:800; font-size:1.1rem; }
+    .d-desc{ margin:0; color:#666; line-height:1.3; font-size:.95rem; }
+
+    .d-actions{ padding: 12px 16px 16px; }
+    .btn-explorar{
+      display:inline-block; width:100%; text-align:center;
+      background: linear-gradient(90deg,#ff3d77,#ff9a44);
+      color:#fff; font-weight:800; text-decoration:none;
+      border-radius: 12px; padding:.65rem 1rem;
+      box-shadow: 0 8px 18px #00000014;
+    }
+
+    @media (max-width: 980px){
+      .destinos-grid{ grid-template-columns: repeat(2, minmax(240px,1fr)); }
+    }
+    @media (max-width: 640px){
+      .destinos-grid{ grid-template-columns: 1fr; }
+    }
+   
+  /* 🔒 Override total del fondo en esta página */
+  html, body {
+    background: #fff !important;         /* reemplaza TODO el background */
+    background-image: none !important;   /* anula la imagen */
+    background-size: auto !important;
+    background-attachment: scroll !important;
+    background-repeat: no-repeat !important;
+  }
+  /* header más plano en esta vista, opcional */
+  .site-header{
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+  }
+</style>
+
+</head>
+<body class="page-destinos">
+
+  <!-- ===== Header (idéntico a Inicio) ===== -->
+ <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="./imagenes/ansolet.png" alt="AnSolet logo" class="logo">
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html"      class="">Inicio</a>
+      <a href="destinos.html"   class="">Destinos</a>
+      <a href="paquete.html"    class="">Tu Paquete</a>
+      <a href="#">Ayuda</a>
+    </nav>
+
+    <div class="right-nav">
+      <span class="minor">Idioma ES | USD</span>
+      <a id="openLogin"    class="btn btn-login"    href="#">Iniciar sesión</a>
+      <a id="openRegister" class="btn btn-register" href="#">Registrarse</a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ===== Contenido: grilla de destinos ===== -->
+  <main class="container destinos">
+    <h1>Elegí tu próximo destino</h1>
+
+    <section class="destinos-grid" aria-label="Destinos disponibles">
+
+      <!-- Maldivas -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/Islas-Maldivas-1.jpg" alt="Maldivas">
+          <span class="d-badge">Desde $2,599</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">Maldivas</h3>
+          <p class="d-desc">Villas sobre aguas cristalinas con arrecifes de coral únicos.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-maldivas.html">Explorar</a>
+
+        </div>
+      </article>
+
+      <!-- Mallorca -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/img.jpg" alt="Mallorca">
+          <span class="d-badge">Desde $1,499</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">Mallorca</h3>
+          <p class="d-desc">Playas cristalinas, paisajes mediterráneos y pueblos llenos de encanto.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-mallorca.html">Explorar</a>
+        </div>
+      </article>
+
+      <!-- París -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/paris.jpg" alt="París">
+          <span class="d-badge">Desde $2,000</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">París</h3>
+          <p class="d-desc">La ciudad del amor con la Torre Eiffel iluminada y gastronomía excepcional.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-paris.html">Explorar</a>
+        </div>
+      </article>
+
+      <!-- Egipto (imagen nueva) -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/egyptian-pyramids-3.jpg" alt="Egipto">
+          <span class="d-badge">Desde $2,199</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">Egipto</h3>
+          <p class="d-desc">Tierra del Nilo y las pirámides; un destino lleno de historia y misterio.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-egipto.html">Explorar</a>
+        </div>
+      </article>
+
+      <!-- Santorini -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/11.jpg" alt="Santorini">
+          <span class="d-badge">Desde $1,799</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">Santorini</h3>
+          <p class="d-desc">Cúpulas azules, atardeceres inolvidables y callejuelas blancas junto al Egeo.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-santorini.html">Explorar</a>
+        </div>
+      </article>
+
+      <!-- Nueva York -->
+      <article class="d-card">
+        <div class="d-media">
+          <img src="./imagenes/nuevayork.jpg" alt="Nueva York">
+          <span class="d-badge">Desde $1,999</span>
+        </div>
+        <div class="d-body">
+          <h3 class="d-title">Nueva York</h3>
+          <p class="d-desc">La ciudad que nunca duerme: rascacielos, luces vibrantes y energía única.</p>
+        </div>
+        <div class="d-actions">
+          <a class="btn-explorar" href="destino-nuevayork.html">Explorar</a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social">
+        <a href="#" aria-label="Twitter/X"><img src="./imagenes/twitter.png" alt="Twitter" class="social-icon"></a>
+        <a href="#" aria-label="Facebook"><img src="./imagenes/facebook.png" alt="Facebook" class="social-icon"></a>
+        <a href="#" aria-label="Instagram"><img src="./imagenes/instagram.png" alt="Instagram" class="social-icon"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

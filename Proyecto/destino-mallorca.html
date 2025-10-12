@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AnSolet • Mallorca</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Fondo blanco en esta página (anula body::before del sitio) */
+    body.page-destino{ background:#fff !important; background-image:none !important; }
+    body.page-destino::before{ content:none !important; }
+
+    .breadcrumb{ font-weight:600; color:#777; padding:14px 0 4px; font-size:.95rem; }
+    .breadcrumb a{ color:#f24a8e; text-decoration:none; }
+    .breadcrumb a:hover{ text-decoration:underline; }
+
+    .dest-hero{ position:relative; border-radius:20px; overflow:hidden; box-shadow:0 20px 50px #0000001a; margin:10px 0 18px; min-height:320px; display:grid; align-items:end; }
+    .dest-hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); filter:saturate(1.05); }
+    .dest-hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55)); }
+    .dest-hero__content{ position:relative; z-index:1; color:#fff; padding:20px; display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; }
+    .dest-hero h1{ margin:0; font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:800; }
+    .chip{ background:#ffffffe6; color:#c7185e; border-radius:999px; padding:.35rem .7rem; font-weight:800; font-size:.9rem; }
+    .cta-row{ margin-left:auto; display:flex; gap:10px; }
+    .cta-row .btn{ border-radius:12px; font-weight:800; }
+    .btn-ghost{ background:#ffffffe6; color:#1b1b1b; }
+
+    .dest-sect{ padding:8px 0 18px; }
+    .dest-grid{ display:grid; gap:18px; grid-template-columns:1.2fr .8fr; }
+    .card{ background:#fff; border:1px solid #f0e6f3; border-radius:16px; box-shadow:0 10px 24px #00000012; overflow:hidden; }
+    .card__body{ padding:16px 18px; }
+    .card h3{ margin:0 0 8px; font-size:1.2rem; }
+
+    .list{ display:grid; gap:8px; margin:0; padding-left:1.1rem; }
+    .gallery{ display:grid; gap:10px; grid-template-columns:repeat(3,1fr); }
+    .gallery img{ width:100%; height:140px; object-fit:cover; border-radius:12px; box-shadow:0 6px 16px #00000012; }
+
+    details{ background:#fff; border:1px solid #f0e6f3; border-radius:12px; padding:12px 14px; box-shadow:0 6px 16px #0000000f; }
+    details + details{ margin-top:10px; }
+    summary{ cursor:pointer; font-weight:800; color:#333; }
+
+    .signin-card{ margin-top:10px; text-align:center; }
+    .signin-card p{ margin:.2rem 0 .8rem; color:#555; }
+    .signin-actions{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .signin-actions .btn{ border-radius:12px; font-weight:800; }
+
+    @media (max-width:960px){ .dest-grid{ grid-template-columns:1fr; } .gallery{ grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+
+<body class="page-destino">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="./imagenes/ansolet.png" alt="AnSolet" class="logo"></a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="destinos.html" class="active">Destinos</a>
+        <a href="paquete.html">Tu Paquete</a>
+        <a href="#">Ayuda</a>
+      </nav>
+
+      <div class="right-nav">
+        <span class="minor">Idioma ES | USD</span>
+        <a id="openLogin" class="btn btn-login" href="#">Iniciar sesión</a>
+        <a id="openRegister" class="btn btn-register" href="#">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb"><a href="destinos.html">Destinos</a> › <span>Mallorca</span></nav>
+
+    <!-- Hero -->
+    <section class="dest-hero" aria-label="Mallorca">
+      <img src="./imagenes/img.jpg" alt="Mallorca, calas y aguas turquesa">
+      <div class="dest-hero__content">
+        <h1>Mallorca</h1>
+        <span class="chip">Desde US$ 1.499</span>
+        <span class="chip">Mejor época: May–Sep</span>
+        <div class="cta-row">
+          <a href="paquete.html" class="btn btn-primary">Armar mi paquete</a>
+          <a href="#faq" class="btn btn-ghost">Dudas frecuentes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido -->
+    <section class="dest-sect dest-grid">
+      <!-- Columna principal -->
+      <article class="card">
+        <div class="card__body">
+          <h3>¿Por qué elegir Mallorca?</h3>
+          <p>
+            Mallorca combina calas de agua turquesa, pueblos de piedra y naturaleza en la
+            <em>Serra de Tramuntana</em>. Es ideal para quienes buscan playas, gastronomía mediterránea y
+            rutas escénicas en auto o bicicleta. Palma sorprende con su catedral gótica frente al mar.
+          </p>
+
+          <div class="gallery" aria-label="Galería">
+            <img src="./imagenes/mallorcaextra1.jpeg" alt="Calas de aguas claras">
+            <img src="./imagenes/mallorcaextra2.jpg" alt="Atardecer mediterráneo">
+            <img src="./imagenes/mallorcaextra3.jpg" alt="(Ejemplo) reemplazá por otra de Mallorca si tenés">
+          </div>
+
+          <h3 style="margin-top:14px;">Lo imperdible</h3>
+          <ul class="list">
+            <li>Visitar las <strong>Cuevas del Drach</strong> y su concierto subterráneo.</li>
+            <li>Recorrer la <strong>Serra de Tramuntana</strong>: Valldemossa, Deià y Sóller.</li>
+            <li>Calas como <strong>Caló des Moro</strong> y <strong>Cala Varques</strong>.</li>
+            <li>Paseo por el casco histórico de <strong>Palma</strong> y su catedral.</li>
+          </ul>
+
+          <h3 style="margin-top:14px;">Hoteles sugeridos</h3>
+          <ul class="list">
+            <li><strong>Zafiro Palace Alcudia</strong> · 5★</li>
+            <li><strong>Hotel Nixe Palace</strong> · 5★</li>
+            <li><strong>Iberostar Selection Playa de Palma</strong> · 5★</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Columna lateral -->
+      <aside class="card">
+        <div class="card__body">
+          <h3>Datos útiles</h3>
+          <ul class="list">
+            <li>Moneda: Euro.</li>
+            <li>Transporte: auto de alquiler recomendado para explorar calas.</li>
+            <li>Conexiones: vuelos directos a Palma (PMI) desde principales ciudades europeas.</li>
+            <li>Clima: veranos cálidos y secos; primavera/otoño templados.</li>
+          </ul>
+
+          <hr style="border:0;border-top:1px solid #f0e6f3; margin:12px 0;">
+          <h3>Incluí en tu paquete</h3>
+          <ul class="list">
+            <li>Traslado aeropuerto ↔ hotel o auto de alquiler.</li>
+            <li>Entrada a Cuevas del Drach (opcional).</li>
+            <li>Seguro de viaje.</li>
+          </ul>
+
+          <div style="margin-top:12px; display:grid; gap:8px;">
+            <a class="btn btn-primary" href="paquete.html">Elegir hotel y vuelos</a>
+            <a class="btn btn-ghost" href="paquete.html">Ver traslados y excursiones</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="dest-sect">
+      <div class="card">
+        <div class="card__body">
+          <h3>Preguntas frecuentes</h3>
+          <details><summary>¿Cuántas noches recomiendan?</summary><p>Entre 4 y 7 noches para combinar Palma, Tramuntana y calas.</p></details>
+          <details><summary>¿Hace falta auto?</summary><p>No es imprescindible en Palma, pero <strong>sí</strong> para llegar cómodo a calas y pueblos.</p></details>
+          <details><summary>¿Las calas son de acceso libre?</summary><p>La mayoría sí, con caminatas cortas; llevá calzado cómodo y agua.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Iniciar sesión / Registrarse -->
+    <section class="dest-sect">
+      <div class="card signin-card">
+        <div class="card__body">
+          <h3>¿Ya tenés cuenta?</h3>
+          <p>Iniciá sesión para <strong>guardar</strong> Mallorca en tus favoritos y recibir <strong>alertas</strong> de precio.</p>
+          <div class="signin-actions">
+            <a href="#" class="btn btn-login" id="signinTrigger">Iniciar sesión</a>
+            <a href="#" class="btn btn-register" id="registerTrigger">Registrarse</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social">
+        <a href="#" aria-label="Twitter/X"><img src="./imagenes/twitter.png" alt="" class="social-icon"></a>
+        <a href="#" aria-label="Facebook"><img src="./imagenes/facebook.png" alt="" class="social-icon"></a>
+        <a href="#" aria-label="Instagram"><img src="./imagenes/instagram.png" alt="" class="social-icon"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modales (mismos IDs que en inicio) -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="auth-card__close" aria-label="Cerrar" data-close="true">×</button>
+      <h2 id="loginTitle">Iniciar Sesión</h2>
+      <form action="#" method="post" class="auth-form" novalidate>
+        <label class="auth-field"><span>Correo electrónico</span><input type="email" placeholder="tu@correo.com" required></label>
+        <label class="auth-field"><span>Contraseña</span><input type="password" placeholder="••••••••" required></label>
+        <div class="auth-row"><label class="remember"><input type="checkbox"> Recordarme</label><a href="#" class="forgot">Olvidé mi contraseña</a></div>
+        <button type="submit" class="btn btn-primary full btn-yellow">Ingresar</button>
+        <div class="divider"><span>o continuar con</span></div>
+        <div class="social-row">
+          <button type="button" class="social-btn" aria-label="Google">G</button>
+          <button type="button" class="social-btn" aria-label="Apple"></button>
+          <button type="button" class="social-btn" aria-label="Facebook">f</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal" id="registerModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+      <button class="auth-card__close" aria-label="Cerrar" data-close="true">×</button>
+      <h2 id="registerTitle">Crear cuenta</h2>
+      <form id="registerForm" action="#" method="post" class="auth-form" novalidate>
+        <div class="auth-grid">
+          <label class="auth-field"><span>Nombre</span><input type="text" name="nombre" required></label>
+          <label class="auth-field"><span>Apellido</span><input type="text" name="apellido" required></label>
+          <label class="auth-field"><span>Correo electrónico</span><input type="email" name="email" required></label>
+          <label class="auth-field"><span>Teléfono (opcional)</span><input type="tel" name="telefono"></label>
+          <label class="auth-field"><span>Contraseña</span><input id="pass1" type="password" name="pass1" minlength="8" required></label>
+          <label class="auth-field"><span>Repetir contraseña</span><input id="pass2" type="password" name="pass2" minlength="8" required></label>
+        </div>
+        <label class="remember" style="margin-top:.2rem;"><input type="checkbox" required> <span>Acepto los <a href="#">Términos</a> y la <a href="#">Política de privacidad</a>.</span></label>
+        <button type="submit" class="btn btn-primary full btn-yellow" style="margin-top:.5rem;">Crear cuenta</button>
+        <div class="divider"><span>o continuar con</span></div>
+        <div class="social-row">
+          <button type="button" class="social-btn" aria-label="Google">G</button>
+          <button type="button" class="social-btn" aria-label="Apple"></button>
+          <button type="button" class="social-btn" aria-label="Facebook">f</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- JS para abrir/cerrar modales + marcar activo -->
+  <script>
+    // Utilidades
+    function openModal(el){ el?.classList.add('is-open'); el?.setAttribute('aria-hidden','false'); }
+    function closeModal(el){ el?.classList.remove('is-open'); el?.setAttribute('aria-hidden','true'); }
+
+    // Login
+    const openLoginBtn = document.getElementById('openLogin');
+    const loginModal   = document.getElementById('loginModal');
+    openLoginBtn?.addEventListener('click', e => { e.preventDefault(); openModal(loginModal); });
+    loginModal?.addEventListener('click', e => { if (e.target.dataset.close) closeModal(loginModal); });
+
+    // Registro
+    const openRegisterBtn = document.getElementById('openRegister');
+    const registerModal   = document.getElementById('registerModal');
+    openRegisterBtn?.addEventListener('click', e => { e.preventDefault(); openModal(registerModal); });
+    registerModal?.addEventListener('click', e => { if (e.target.dataset.close) closeModal(registerModal); });
+
+    // ESC para cerrar
+    window.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeModal(loginModal); closeModal(registerModal); } });
+
+    // Botones de la tarjeta “¿Ya tenés cuenta?”
+    document.getElementById('signinTrigger')?.addEventListener('click', e => { e.preventDefault(); openModal(loginModal); });
+    document.getElementById('registerTrigger')?.addEventListener('click', e => { e.preventDefault(); openModal(registerModal); });
+
+    // Validación básica de contraseñas
+    document.getElementById('registerForm')?.addEventListener('submit', e => {
+      const p1 = document.getElementById('pass1').value.trim();
+      const p2 = document.getElementById('pass2').value.trim();
+      if (p1.length < 8){ e.preventDefault(); alert('La contraseña debe tener al menos 8 caracteres.'); return; }
+      if (p1 !== p2){ e.preventDefault(); alert('Las contraseñas no coinciden.'); }
+    });
+
+    // Marcar activo en menú
+    (function() {
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.main-nav a').forEach(a => {
+        if (a.getAttribute('href') === path) a.classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html>
