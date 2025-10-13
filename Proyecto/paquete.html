@@ -14,7 +14,7 @@
     /* ===== Layout de la página (carrito + opciones) ===== */
     .pkg-layout{
       display:grid;
-      grid-template-columns: 360px 1fr; /* Carrito fijo + panel flexible */
+      grid-template-columns: clamp(240px, 22vw, 300px) 1fr; /* Carrito fijo + panel flexible */
       gap:18px;
       
     }
@@ -27,7 +27,7 @@
     }
 
     /* ===== Carrito ===== */
-    .cart{ padding:18px 22px; }
+    .cart{ padding:20px 22px; }
     .cart h3{ margin:4px 0 10px; }
     .cart hr{ border:0; border-top:1px solid #e8d9ee; margin:8px 0 12px; }
     .cart .empty{ color:#8a8a8a; }
