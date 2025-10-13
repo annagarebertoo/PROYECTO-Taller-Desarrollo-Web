@@ -119,8 +119,7 @@
   white-space: nowrap !important;
 }
 
-/* 4) Si tu ancho es MUY justo, solo entonces baja las acciones a otra línea
-      (pero mantenemos las 3 columnas) */
+
 @media (max-width: 1150px){
   .pill{ display: grid !important; grid-template-columns: 1fr auto !important; }
   .pill .actions{ grid-column: 1 / -1; justify-content: flex-start; }
