@@ -23,14 +23,24 @@
     </a>
 
     <nav class="main-nav" aria-label="Navegación principal">
-      <a href="index.html"      class="">Inicio</a>
-      <a href="destinos.html"   class="">Destinos</a>
-      <a href="paquete.html"    class="">Tu Paquete</a>
-    
-    </nav>
+  <a href="index.html"      class="">Inicio</a>
+  <a href="destinos.html"   class="">Destinos</a>
+  <a href="paquete.html"    class="">Tu Paquete</a>
+
+  <!-- ▼ NUEVO: Dropdown Agregar productos -->
+  <div class="nav-dropdown">
+    <button id="adminDropBtn" class="nav-drop__btn" aria-haspopup="true" aria-expanded="false">
+      Agregar productos ▾
+    </button>
+    <div id="adminDropMenu" class="nav-drop__menu" aria-hidden="true" role="menu">
+      <a href="#" role="menuitem" data-open="modalAddFlight">Añadir vuelo</a>
+      <a href="#" role="menuitem" data-open="modalAddDestination">Añadir destino</a>
+    </div>
+  </div>
+</nav>
+
 
     <div class="right-nav">
-      <span class="minor">Idioma ES | USD</span>
       <a id="openLogin"    class="btn btn-login"    href="#">Iniciar sesión</a>
       <a id="openRegister" class="btn btn-register" href="#">Registrarse</a>
     </div>
@@ -249,40 +259,256 @@
     </section>
   </div>
 
+
+  <!-- ===== Modal: Añadir vuelo ===== -->
+<div class="modal" id="modalAddFlight" aria-hidden="true">
+  <div class="modal__backdrop" data-close="true"></div>
+  <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="addFlightTitle">
+    <button class="auth-card__close" aria-label="Cerrar" data-close="true">×</button>
+    <h2 id="addFlightTitle">Añadir vuelo</h2>
+
+    <form id="addFlightForm" class="auth-form" novalidate>
+      <div class="auth-grid">
+        <label class="auth-field"><span>Origen</span>
+          <input type="text" id="af_origin" placeholder="Ej: Córdoba (COR)" required>
+        </label>
+        <label class="auth-field"><span>Destino</span>
+          <input type="text" id="af_destination" placeholder="Ej: París (CDG)" required>
+        </label>
+        <label class="auth-field"><span>Fecha (salida)</span>
+          <input type="date" id="af_date" required>
+        </label>
+        <label class="auth-field"><span>Aerolínea</span>
+          <input type="text" id="af_airline" placeholder="AnSolet Air" required>
+        </label>
+        <label class="auth-field"><span>Número de vuelo</span>
+          <input type="text" id="af_flightNo" placeholder="AS 401" required>
+        </label>
+        <label class="auth-field"><span>Precio (USD)</span>
+          <input type="number" id="af_price" min="0" step="1" placeholder="1299" required>
+        </label>
+        <label class="auth-field"><span>Duración</span>
+          <input type="text" id="af_duration" placeholder="16h 10m" required>
+        </label>
+        <label class="auth-field"><span>Escalas</span>
+          <input type="text" id="af_stops" placeholder="1 escala / directo" required>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary full btn-yellow" style="margin-top:.5rem;">Guardar vuelo</button>
+    </form>
+  </section>
+</div>
+
+<!-- ===== Modal: Añadir destino ===== -->
+<div class="modal" id="modalAddDestination" aria-hidden="true">
+  <div class="modal__backdrop" data-close="true"></div>
+  <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="addDestinationTitle">
+    <button class="auth-card__close" aria-label="Cerrar" data-close="true">×</button>
+    <h2 id="addDestinationTitle">Añadir destino</h2>
+
+    <form id="addDestinationForm" class="auth-form" novalidate>
+      <div class="auth-grid">
+        <label class="auth-field"><span>Nombre del destino</span>
+          <input type="text" id="ad_name" placeholder="Ej: Roma" required>
+        </label>
+        <label class="auth-field"><span>Código (IATA)</span>
+          <input type="text" id="ad_code" placeholder="Ej: FCO" maxlength="3" required>
+        </label>
+        <label class="auth-field"><span>Precio orientativo (USD)</span>
+          <input type="number" id="ad_price" min="0" step="1" placeholder="1200">
+        </label>
+        <label class="auth-field"><span>Mejor época</span>
+          <input type="text" id="ad_best" placeholder="Abr–Oct">
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary full btn-yellow" style="margin-top:.5rem;">Guardar destino</button>
+    </form>
+  </section>
+</div>
+
   <!-- ====== SCRIPT PRINCIPAL ======
        Controla la apertura/cierre de modales y validaciones simples
   =============================================== -->
-  <script>
-    (() => {
-      const $ = (s) => document.querySelector(s);
-      const open = (el) => { if(el){ el.classList.add('is-open'); el.setAttribute('aria-hidden','false'); } };
-      const close = (el) => { if(el){ el.classList.remove('is-open'); el.setAttribute('aria-hidden','true'); } };
+ <script>
+/* ===========================
+   Helpers y base local
+   =========================== */
+const $  = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-      const openLogin = $("#openLogin");
-      const openRegister = $("#openRegister");
-      const loginModal = $("#loginModal");
-      const registerModal = $("#registerModal");
+function openById(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('is-open');
+  el.setAttribute('aria-hidden','false');
+}
+function closeById(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('is-open');
+  el.setAttribute('aria-hidden','true');
+}
 
-      // Abrir modales
-      openLogin?.addEventListener("click", (e) => { e.preventDefault(); open(loginModal); });
-      openRegister?.addEventListener("click", (e) => { e.preventDefault(); open(registerModal); });
+function ensureOption(select, label){
+  if(!select || !label) return;
+  const exists = Array.from(select.options).some(o => o.textContent.trim().toLowerCase() === label.trim().toLowerCase());
+  if(!exists){
+    const op = document.createElement('option');
+    op.value = label;
+    op.textContent = label;
+    select.appendChild(op);
+  }
+}
 
-      // Cerrar modales al hacer clic fuera o con ESC
-      [loginModal, registerModal].forEach(modal => {
-        modal?.addEventListener("click", (e) => { if (e.target.dataset.close) close(modal); });
-      });
-      window.addEventListener("keydown", (e) => { if (e.key === "Escape") { close(loginModal); close(registerModal); } });
+// Persistencia de vuelos
+const FLIGHTS = (() => {
+  try { return JSON.parse(localStorage.getItem('flights') || '[]'); }
+  catch { return []; }
+})();
+const saveFlights = () => localStorage.setItem('flights', JSON.stringify(FLIGHTS));
 
-      // Validación de contraseñas en el registro
-      const regForm = $("#registerForm");
-      regForm?.addEventListener("submit", (e) => {
-        const p1 = $("#pass1")?.value.trim() ?? "";
-        const p2 = $("#pass2")?.value.trim() ?? "";
-        if (p1.length < 8) { e.preventDefault(); alert("La contraseña debe tener al menos 8 caracteres."); return; }
-        if (p1 !== p2) { e.preventDefault(); alert("Las contraseñas no coinciden."); return; }
-      });
-    })();
-  </script>
+/* ===========================
+   LOGIN / REGISTRO (modales ya existentes)
+   =========================== */
+const loginModal    = $('#loginModal');
+const registerModal = $('#registerModal');
+
+$('#openLogin')?.addEventListener('click', (e)=>{ e.preventDefault(); openById('loginModal'); });
+$('#openRegister')?.addEventListener('click', (e)=>{ e.preventDefault(); openById('registerModal'); });
+
+// Cerrar login/registro con fondo/X
+[loginModal, registerModal].forEach(m=>{
+  m?.addEventListener('click', (e)=>{
+    const closer = e.target.closest('[data-close]');
+    if (closer && m.contains(closer)) closeById(m.id);
+  });
+});
+
+// Validación simple de registro
+$('#registerForm')?.addEventListener('submit', (e)=>{
+  const p1 = $('#pass1')?.value.trim() ?? '';
+  const p2 = $('#pass2')?.value.trim() ?? '';
+  if(p1.length < 8){ e.preventDefault(); alert('La contraseña debe tener al menos 8 caracteres.'); return; }
+  if(p1 !== p2){ e.preventDefault(); alert('Las contraseñas no coinciden.'); }
+});
+
+/* ===========================
+   Dropdown “Agregar productos”
+   =========================== */
+const adminBtn  = $('#adminDropBtn');
+const adminMenu = $('#adminDropMenu');
+
+adminBtn?.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const open = adminMenu.classList.toggle('is-open');
+  adminBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  adminMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+});
+
+// Cerrar dropdown al click afuera
+document.addEventListener('click', (e)=>{
+  if(!adminMenu) return;
+  if(adminMenu.contains(e.target) || adminBtn.contains(e.target)) return;
+  adminMenu.classList.remove('is-open');
+  adminBtn?.setAttribute('aria-expanded','false');
+  adminMenu?.setAttribute('aria-hidden','true');
+});
+
+// Abrir modales de “Agregar productos” desde el menú (usa data-open)
+adminMenu?.addEventListener('click', (e)=>{
+  const target = e.target.closest('[data-open]');
+  if(!target) return;
+  e.preventDefault();
+  openById(target.dataset.open);
+  adminMenu.classList.remove('is-open');
+});
+
+/* ===========================
+   Modales NUEVOS: Add Flight / Add Destination
+   =========================== */
+// Cerrar con fondo/X (cualquier [data-close]) y ESC
+['modalAddFlight','modalAddDestination'].forEach(id=>{
+  const modal = document.getElementById(id);
+  if(!modal) return;
+  modal.addEventListener('click', (e)=>{
+    const closer = e.target.closest('[data-close]');
+    if(closer && modal.contains(closer)) closeById(id);
+  });
+});
+window.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){
+    closeById('modalAddFlight');
+    closeById('modalAddDestination');
+    closeById('loginModal');
+    closeById('registerModal');
+  }
+});
+
+// Alta de VUELO
+const addFlightForm = $('#addFlightForm');
+addFlightForm?.addEventListener('submit', (e)=>{
+  e.preventDefault();
+
+  const f = {
+    id: Date.now(),
+    origin:      $('#af_origin')?.value.trim(),
+    destination: $('#af_destination')?.value.trim(),
+    date:        $('#af_date')?.value,
+    airline:     $('#af_airline')?.value.trim() || 'AnSolet Air',
+    flightNo:    $('#af_flightNo')?.value.trim(),
+    price:       parseInt($('#af_price')?.value || '0', 10) || 0,
+    duration:    $('#af_duration')?.value.trim(),
+    stops:       $('#af_stops')?.value.trim()
+  };
+
+  if(!f.origin || !f.destination || !f.date || !f.flightNo || !f.duration || !f.stops){
+    alert('Completá todos los campos obligatorios.');
+    return;
+  }
+
+  FLIGHTS.push(f);
+  saveFlights();
+
+  // Actualizar selects del buscador
+  ensureOption($('#origen'),  f.origin);
+  ensureOption($('#destino'), f.destination);
+
+  alert('✅ Vuelo agregado');
+  addFlightForm.reset();
+  closeById('modalAddFlight');
+});
+
+// Alta de DESTINO
+const addDestinationForm = $('#addDestinationForm');
+addDestinationForm?.addEventListener('submit', (e)=>{
+  e.preventDefault();
+
+  const name = $('#ad_name')?.value.trim();
+  const code = ($('#ad_code')?.value || '').trim().toUpperCase();
+  if(!name){ alert('Completá el nombre del destino.'); return; }
+
+  const label = code ? `${name} (${code})` : name;
+  ensureOption($('#destino'), label);
+
+  alert('✅ Destino agregado');
+  addDestinationForm.reset();
+  closeById('modalAddDestination');
+});
+
+// Hidratar selects desde lo ya guardado
+(function hydrateSelectsFromFlights(){
+  const originSel = $('#origen');
+  const destSel   = $('#destino');
+  if(!originSel && !destSel) return;
+  const origins = new Set( FLIGHTS.map(f => f.origin).filter(Boolean) );
+  const dests   = new Set( FLIGHTS.map(f => f.destination).filter(Boolean) );
+  origins.forEach(o => ensureOption(originSel, o));
+  dests.forEach(d => ensureOption(destSel, d));
+})();
+</script>
+
 </body>
 </html>
 
