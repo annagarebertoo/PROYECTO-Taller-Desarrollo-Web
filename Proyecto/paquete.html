@@ -16,7 +16,7 @@
       display:grid;
       grid-template-columns: 360px 1fr; /* Carrito fijo + panel flexible */
       gap:18px;
-      padding:20px 0 36px;
+      
     }
     .card-ghost{
       background:rgba(255,255,255,.9);
@@ -37,11 +37,7 @@
 
     /* ===== Panel de opciones (acordeón en 3 columnas) ===== */
     .options{ padding:12px 14px 16px; }
-    .accordion{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(280px, 1fr));
-      gap:18px;
-    }
+  
     .acc{ border:1px solid #f1e6f5; border-radius:18px; background:#fff; overflow:hidden; }
     .acc__head{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px; font-weight:800; cursor:pointer; }
     .acc__body{
@@ -51,7 +47,7 @@
       box-sizing: border-box;
       scrollbar-gutter: stable both-edges;
     }
-    .acc.is-open .acc__body{ display:block; }
+  
 
     /* ===== Pastillas de opción ===== */
     .pill{
@@ -68,7 +64,6 @@
       box-shadow:0 8px 18px #00000015;
       overflow:hidden;
       word-break:break-word;
-      padding-right:12px;
     }
     .pill .line1{ font-weight:800; }
     .pill .sub{ font-size:.85rem; opacity:.95; text-decoration:underline; display:inline-block; margin-top:2px; }
