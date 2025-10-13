@@ -88,7 +88,50 @@
       .pkg-layout{ grid-template-columns: 1fr; }
       .accordion{ grid-template-columns: 1fr; }
     }
-    
+    /* === FIX MINIMO sobre la versión anterior === */
+
+/* 1) Centrar el layout y separarlo del header */
+.container{ max-width: 1280px !important; margin: 0 auto !important; }
+.pkg-layout{ margin-top: 18px !important; justify-content: center !important; }
+
+/* 2) Acordeón: mantener 3 columnas como antes */
+.accordion{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
+  gap: 12px !important;
+  justify-content: center !important;
+  align-items: start;
+  overflow: visible;
+}
+
+/* 3) FIX del recorte: reservar espacio para la scrollbar
+      y permitir que la pastilla “desborde” sin cortar los botones */
+.acc__body{
+  padding-right: 36px !important;       /* +espacio del lado de la barra */
+  scrollbar-gutter: stable both-edges !important;
+  box-sizing: border-box;
+}
+.pill{
+  overflow: visible !important;          /* evita que recorte “Quitar” */
+  padding-right: 16px !important;        /* un poquito más de aire */
+}
+
+/* Botones un toque más compactos y sin cortar texto */
+.pill .actions{ gap: 8px !important; flex-wrap: nowrap !important; }
+.pill .btn-add, .pill .btn-remove, .pill .btn-ok, .pill .btn-x{
+  font-size: .88rem !important;
+  padding: .34rem .62rem !important;
+  white-space: nowrap !important;
+}
+
+/* 4) Si tu ancho es MUY justo, solo entonces baja las acciones a otra línea
+      (pero mantenemos las 3 columnas) */
+@media (max-width: 1150px){
+  .pill{ display: grid !important; grid-template-columns: 1fr auto !important; }
+  .pill .actions{ grid-column: 1 / -1; justify-content: flex-start; }
+  .pill .price{ grid-column: 1 / -1; justify-self: end; }
+}
+
   </style>
 </head>
 <body>
@@ -105,14 +148,10 @@
       <a href="index.html"      class="">Inicio</a>
       <a href="destinos.html"   class="">Destinos</a>
       <a href="paquete.html"    class="">Tu Paquete</a>
-      <a href="#">Ayuda</a>
+    
     </nav>
 
-    <div class="right-nav">
-      <span class="minor">Idioma ES | USD</span>
-      <a id="openLogin"    class="btn btn-login"    href="#">Iniciar sesión</a>
-      <a id="openRegister" class="btn btn-register" href="#">Registrarse</a>
-    </div>
+  
   </div>
 </header>
 
@@ -128,9 +167,7 @@
       <hr>
 
       <div id="cartLines" class="muted">
-        <div>Pack Cancún 7 noches:</div>
-        <div>Vuelo ida 01/01</div>
-        <div>Vuelo vuelta 08/01</div>
+        
 
         <div style="margin-top:.6rem;"><strong>Hotel</strong></div>
         <div id="cartHotel" class="empty">—</div>
@@ -244,15 +281,15 @@
 
       if(group === 'hotel'){
         const ok = document.createElement('button');
-        ok.type='button'; ok.className='btn-ok'; ok.textContent='Seleccionar';
+        ok.type='button'; ok.className='btn-ok'; ok.textContent='✓';
         const rm = document.createElement('button');
-        rm.type='button'; rm.className='btn-x'; rm.textContent='Quitar';
+        rm.type='button'; rm.className='btn-x'; rm.textContent='×';
         actions.append(ok, rm);
       }else{
         const add = document.createElement('button');
-        add.type='button'; add.className='btn-add'; add.textContent='Añadir';
+        add.type='button'; add.className='btn-add'; add.textContent='✓';
         const rm  = document.createElement('button');
-        rm.type='button'; rm.className='btn-remove'; rm.textContent='Quitar';
+        rm.type='button'; rm.className='btn-remove'; rm.textContent='×';
         actions.append(add, rm);
       }
 

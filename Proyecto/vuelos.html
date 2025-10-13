@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vuelos disponibles</title>
+
+  <!-- Tu hoja principal -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root{
+      --brand:        #ff3d77;
+      --brand-600:    #ff6895;
+      --ink:          #000000;
+      --muted:        #495266;
+      --bg-card:      #ffffff;
+      --bd:           #e5e7eb;
+      --pill-bg:      #eef6ff;
+      --pill-ink:     #08314a;
+      --empty-bg:     #fff7ed;
+      --empty-ink:    #000000;
+      --btn-ink:      #ffffff;
+      --btn-bg:       var(--brand);
+      --btn-bg-hover: var(--brand-600);
+      --header-bg:   rgba(255,255,255,.6); /* header blanco */
+    }
+
+    /* ===== Layout base ===== */
+    body { color: var(--ink); margin:0; }
+    .section { padding: 24px 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+    /* ====== HEADER (blanco, sticky) ====== */
+    .site-header{
+      position: sticky; top: 0; z-index: 50;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--bd);
+    }
+    .site-header .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      height:64px;
+    }
+    .brand{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo{ height:36px; width:auto; display:block; }
+
+    .main-nav{ display:flex; gap:18px; align-items:center; }
+    .main-nav a{
+      text-decoration:none; font-weight:700; color:#111827; padding:8px 10px; border-radius:10px;
+    }
+    .main-nav a:hover{ background:#f3f4f6; }
+    .main-nav a.is-active{ color:#111; background:#eef2ff; border:1px solid #e5e7eb; }
+
+    .right-nav{ display:flex; gap:12px; align-items:center; }
+    .minor{ font-size:12px; color:#6b7280; }
+    .btn{ padding:8px 12px; border-radius:10px; cursor:pointer; border:1px solid transparent; font-weight:700; text-decoration:none; }
+    .btn-login{ background:#fff; border-color:var(--bd); color:#111; }
+    .btn-login:hover{ border-color:#cbd5e1; }
+    .btn-register{ background:var(--btn-bg); color:var(--btn-ink); }
+    .btn-register:hover{ background:var(--btn-bg-hover); }
+
+    /* ====== HERO de título (solo el título en blanco) ====== */
+/* HERO sin fondo, texto blanco y sin línea inferior */
+.hero-title{
+  background: transparent;   /* sin fondo detrás del título */
+  padding: 20px 0;
+  border: none;              /* quita cualquier borde */
+  box-shadow: none;          /* por si algún estilo global agrega sombra */
+}
+
+.hero-title h1{
+  margin: 0;
+  color: #ffffff;            /* texto blanco */
+  font-size: clamp(30px, 3vw, 28px);
+  border: 0;                 /* asegura que no haya línea en el h1 */
+}
+
+
+
+    /* ====== Encabezado interno de la sección ====== */
+    .heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+    .heading h2 { margin:0; font-size:20px; } /* por si querés un subtítulo interno en negro */
+
+    .back {
+      text-decoration:none; font-weight:700;
+      color: var(--btn-ink);
+      background: var(--btn-bg);
+      border: 1px solid transparent;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background .15s ease, transform .05s ease;
+    }
+    .back:hover { background: var(--btn-bg-hover); }
+
+    /* ===== Resumen (pills) ===== */
+    .pills { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+    .pill {
+      background: var(--pill-bg);
+      color: var(--pill-ink);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid #dbeafe;
+    }
+
+    /* ===== Lista vertical ===== */
+    .list { display:flex; flex-direction:column; gap:12px; }
+    .item {
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center; justify-content:space-between;
+      background: var(--bg-card);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      padding:14px 16px;
+      transition: box-shadow .15s ease, transform .05s ease;
+    }
+    .item:hover { box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+    .col { display:flex; flex-direction:column; gap:4px; min-width: 220px; }
+    .ruta { font-weight:900; font-size:18px; }
+    .meta { font-size:14px; color: var(--muted); }
+    .badges { display:flex; flex-wrap:wrap; gap:6px; margin-top: 4px; }
+    .badge { font-size:12px; background:#f1f5f9; color:#0f172a; padding:4px 8px; border-radius:999px; border:1px solid #e2e8f0; }
+    .precio { font-weight:900; font-size:20px; white-space:nowrap; }
+    .acciones { display:grid; grid-template-columns: 1fr 1fr; gap:10px; width: 260px; }
+    .btn-primary { background: var(--btn-bg); color: var(--btn-ink); }
+    .btn-primary:hover { background: var(--btn-bg-hover); }
+    .btn-outline { background:#fff; border-color: var(--bd); color: var(--ink); }
+    .btn-outline:hover { border-color: #cbd5e1; }
+
+
+    @media (max-width: 820px){
+      .acciones { width: 100%; grid-template-columns: 1fr 1fr; }
+      .col[style*="align-items:flex-end"]{ align-items:flex-start !important; }
+      .precio { font-size:18px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== HEADER (blanco) ====== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="./imagenes/ansolet.png" alt="AnSolet logo" class="logo">
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="destinos.html">Destinos</a>
+        <a href="paquete.html">Tu Paquete</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ====== HERO de título (solo el título en blanco) ====== -->
+  <div class="hero-title">
+    <div class="container">
+      <h1>Vuelos disponibles</h1>
+    </div>
+  </div>
+
+  <!-- ====== CONTENIDO ====== -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <!-- si querés un subtítulo interno, usá <h2> -->
+        <a class="back" href="javascript:history.back()">Modificar búsqueda</a>
+      </div>
+
+      <!-- Resumen -->
+      <div class="pills" id="resumen"></div>
+
+      <!-- Lista vertical -->
+      <div class="list" id="lista"></div>
+
+      <div class="empty" id="empty" style="display:none;">
+    
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Marcar activo en el menú (opcional)
+    (function(){
+      const here = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.main-nav a').forEach(a=>{
+        const target = a.getAttribute('href');
+        if (target === here) a.classList.add('is-active');
+      });
+    })();
+
+    // ================== Parámetros del buscador ==================
+    const qp = new URLSearchParams(location.search);
+    const origen    = qp.get('origen')    || '';
+    const destino   = qp.get('destino')   || '';
+    const ida       = qp.get('ida')       || '';
+    const vuelta    = qp.get('vuelta')    || '';
+    const pasajeros = qp.get('pasajeros') || '';
+    const clase     = qp.get('clase')     || '';
+
+    const fFecha = (iso) => {
+      if (!iso) return '-';
+      const [y,m,d] = iso.split('-');
+      return `${d}/${m}/${y}`;
+    };
+
+    // Resumen
+    document.getElementById('resumen').innerHTML = `
+      <span class="pill">Origen: ${origen || '-'}</span>
+      <span class="pill">Destino: ${destino || '-'}</span>
+      <span class="pill">Ida: ${fFecha(ida)}</span>
+      <span class="pill">Vuelta: ${fFecha(vuelta)}</span>
+      <span class="pill">Pasajeros: ${pasajeros || '-'}</span>
+      <span class="pill">Clase: ${clase || '-'}</span>
+    `;
+
+    // ================== Datos de ejemplo ==================
+    const DATA = [
+      { origen:"Córdoba",      destino:"Paris",       aerolinea:"Air France",   codigo:"AF 409", sale:"13:40", llega:"06:15 +1", duracion:"14h 35m", escalas:1, baseUSD: 1550 },
+      { origen:"Córdoba",      destino:"Santorini",   aerolinea:"Aegean",       codigo:"A3 721", sale:"09:10", llega:"03:20 +1", duracion:"17h 10m", escalas:2, baseUSD: 1390 },
+      { origen:"Buenos Aires", destino:"Nueva York",  aerolinea:"American",     codigo:"AA 900", sale:"22:55", llega:"08:10",    duracion:"11h 15m", escalas:0, baseUSD: 1220 },
+      { origen:"Buenos Aires", destino:"Maldivas",    aerolinea:"Qatar",        codigo:"QR 774", sale:"23:50", llega:"23:45 +1", duracion:"17h 55m", escalas:1, baseUSD: 1890 },
+      { origen:"Rosario",      destino:"Mallorca",    aerolinea:"Iberia",       codigo:"IB 351", sale:"12:30", llega:"08:20 +1", duracion:"15h 50m", escalas:1, baseUSD: 1440 },
+      { origen:"Mendoza",      destino:"Egipto",      aerolinea:"Turkish",      codigo:"TK 16",  sale:"18:45", llega:"19:05 +1", duracion:"20h 20m", escalas:2, baseUSD: 2010 },
+      { origen:"Buenos Aires", destino:"Paris",       aerolinea:"Air France",   codigo:"AF 229", sale:"17:55", llega:"11:10 +1", duracion:"13h 15m", escalas:0, baseUSD: 1360 },
+      { origen:"Rosario",      destino:"Paris",       aerolinea:"Iberia",       codigo:"IB 356", sale:"08:20", llega:"05:15 +1", duracion:"19h 55m", escalas:2, baseUSD: 1480 },
+      { origen:"Mendoza",      destino:"Santorini",   aerolinea:"Aegean",       codigo:"A3 733", sale:"10:05", llega:"09:10 +1", duracion:"21h 05m", escalas:2, baseUSD: 1590 },
+    ];
+
+    const MULT_CLASE = { 'Economica': 1.00, 'Premium': 1.25, 'Business': 1.60, 'First': 2.10 };
+    const mult = MULT_CLASE[clase] || 1.00;
+
+    let resultados = DATA.filter(v =>
+      (!origen  || v.origen.toLowerCase()  === origen.toLowerCase()) &&
+      (!destino || v.destino.toLowerCase() === destino.toLowerCase())
+    );
+
+    if (resultados.length === 0) {
+      resultados = DATA.filter(v => !origen || v.origen.toLowerCase() === origen.toLowerCase()).slice(0,5);
+      if (resultados.length === 0) resultados = DATA.slice(0,5);
+      document.getElementById('empty').style.display = 'block';
+    }
+
+    const fmtUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+    const $lista = document.getElementById('lista');
+    $lista.innerHTML = resultados.map((v, i) => {
+      const precio = Math.round(v.baseUSD * mult);
+      const escalasTxt = v.escalas === 0 ? 'Directo' : (v.escalas === 1 ? '1 escala' : `${v.escalas} escalas`);
+      return `
+        <article class="item">
+          <div class="col" style="flex:1 1 260px;">
+            <div class="ruta">${v.origen} → ${v.destino}</div>
+            <div class="meta">${v.aerolinea} • ${v.codigo}</div>
+            <div class="badges">
+              <span class="badge">${escalasTxt}</span>
+              ${clase ? `<span class="badge">Clase: ${clase}</span>` : ''}
+              ${pasajeros ? `<span class="badge">${pasajeros} pasajero/s</span>` : ''}
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="meta"><strong>Sale</strong> ${v.sale}</div>
+            <div class="meta"><strong>Llega</strong> ${v.llega}</div>
+            <div class="meta">${v.duracion}</div>
+          </div>
+
+          <div class="col" style="align-items:flex-end; gap:10px;">
+            ${ida ? `<div class="meta">Ida: ${fFecha(ida)}</div>` : ''}
+            ${vuelta ? `<div class="meta">Vuelta: ${fFecha(vuelta)}</div>` : ''}
+            <div class="precio">${fmtUSD.format(precio)}</div>
+            <div class="acciones">
+              <button class="btn btn-outline" data-detalle="${i}">Detalles</button>
+              <button class="btn btn-primary" data-elegir="${i}">Elegir</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    $lista.addEventListener('click', (e) => {
+      const detalle = e.target.closest('button[data-detalle]');
+      const elegir  = e.target.closest('button[data-elegir]');
+      if (!detalle && !elegir) return;
+
+      const idx = Number((detalle || elegir).dataset.detalle ?? (elegir?.dataset.elegir));
+      const v = resultados[idx];
+      const precio = Math.round(v.baseUSD * mult);
+
+      const payload = { ...v, precioUSD: precio, clase: clase || 'Economica', pasajeros: pasajeros || '1', ida, vuelta };
+      sessionStorage.setItem('vueloSeleccionado', JSON.stringify(payload));
+
+      if (detalle) {
+        alert(`${v.aerolinea} ${v.codigo}
+${v.origen} → ${v.destino}
+Sale ${v.sale} · Llega ${v.llega}
+Duración ${v.duracion}
+${v.escalas===0?'Directo':(v.escalas+' escalas')}
+Precio ${fmtUSD.format(precio)}`);
+      } else {
+        // window.location.href = './checkout.html';
+        alert(`Seleccionaste ${v.aerolinea} ${v.codigo}. ¡Listo para continuar!`);
+      }
+    });
+  </script>
+</body>
+</html>

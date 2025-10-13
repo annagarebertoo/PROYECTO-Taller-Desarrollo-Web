@@ -26,7 +26,7 @@
       <a href="index.html"      class="">Inicio</a>
       <a href="destinos.html"   class="">Destinos</a>
       <a href="paquete.html"    class="">Tu Paquete</a>
-      <a href="#">Ayuda</a>
+    
     </nav>
 
     <div class="right-nav">
@@ -47,18 +47,34 @@
       <p class="sub">Compara y encontrá las mejores ofertas</p>
 
       <!-- Formulario de búsqueda -->
-      <form class="search-card" action="#" method="get">
+      <form class="search-card" action="./vuelos.html" method="get">
         <div class="fields">
           <!-- Campos de búsqueda -->
-          <div class="field">
-            <label for="origen">Origen</label>
-            <input id="origen" name="origen" type="text" placeholder="Ingrese Origen" />
-          </div>
+        
+<div class="field">
+  <label for="origen">Origen</label>
+  <select id="origen" name="origen" required>
+    <option value="" selected disabled>Seleccioná un origen</option>
+    <option value="Córdoba">Córdoba</option>
+    <option value="Buenos Aires">Buenos Aires</option>
+    <option value="Rosario">Rosario</option>
+    <option value="Mendoza">Mendoza</option>
+  </select>
+</div>
 
-          <div class="field">
-            <label for="destino">Destino</label>
-            <input id="destino" name="destino" type="text" placeholder="Ingrese Destino" />
-          </div>
+<div class="field">
+  <label for="destino">Destino</label>
+  <select id="destino" name="destino" required>
+    <option value="" selected disabled>Seleccioná un destino</option>
+    <option value="Egipto">Egipto</option>
+    <option value="Maldivas">Maldivas</option>
+    <option value="Mallorca">Mallorca</option>
+    <option value="Nueva York">Nueva York</option>
+    <option value="Paris">Paris</option>
+    <option value="Santorini">Santorini</option>
+  </select>
+</div>
+
 
           <div class="field">
             <label for="ida">Ida</label>
@@ -70,14 +86,18 @@
             <input id="vuelta" name="vuelta" type="date" />
           </div>
 
-          <div class="field small">
-            <label for="pasajeros">Pasajeros</label>
-            <select id="pasajeros" name="pasajeros">
-              <option>1 pasajero económica</option>
-              <option>2 pasajeros económica</option>
-              <option>1 pasajero premium</option>
-            </select>
-          </div>
+       <div class="field small">
+  <label for="pasajeros">Pasajeros</label>
+  <select id="pasajeros" name="pasajeros" required>
+    <option value="1" selected>1 pasajero</option>
+    <option value="2">2 pasajeros</option>
+    <option value="3">3 pasajeros</option>
+    <option value="4">4 pasajeros</option>
+    <option value="5">5 pasajeros</option>
+    <option value="6">6 pasajeros</option>
+  </select>
+</div>
+
 
           <!-- Botón de búsqueda -->
           <div class="field">
@@ -86,12 +106,14 @@
           </div>
         </div>
 
-        <!-- Opciones extra -->
-        <div class="options">
-          <label><input type="checkbox" checked /> Directo</label>
-          <label><input type="checkbox" /> Fechas flexibles</label>
-          <label><input type="checkbox" /> Equipaje incluido</label>
-        </div>
+        <!-- Selección de clase -->
+<div class="options" role="group" aria-label="Clase de vuelo">
+  <label><input type="radio" name="clase" value="Economica" required> Económica</label>
+  <label><input type="radio" name="clase" value="Premium"> Premium</label>
+  <label><input type="radio" name="clase" value="Business"> Business</label>
+  <label><input type="radio" name="clase" value="First"> First</label>
+</div>
+
       </form>
     </div>
   </section>
