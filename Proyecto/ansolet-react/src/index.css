@@ -23,15 +23,21 @@ position: relative;
 
 }
 
-body::before{
+/* SOLO muestra el fondo en las pantallas que usen hero-bg */
+.hero-bg {
+  position: relative;
+  min-height: 100dvh;
+}
+.hero-bg::before{
   content:"";
   position: fixed;
   inset: 0;
   background: url("/imagenes/fondo.png") center / cover no-repeat;
-  opacity: .8;              /* 80% */
-  z-index: -1;              /* queda detrás de todo */
-  pointer-events: none;     /* no interfiere con clicks */
+  opacity: .85;
+  z-index: -1;
+  pointer-events: none;
 }
+
 
 /* ====== Utilitarias ====== */
 .container{
