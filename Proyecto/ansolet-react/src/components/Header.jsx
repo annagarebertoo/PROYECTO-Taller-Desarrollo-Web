@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom'
+
 function Header() {
   return (
     <header className="site-header">
@@ -7,9 +9,9 @@ function Header() {
         </a>
 
         <nav className="main-nav" aria-label="Principal">
-          <a href="/">Inicio</a>
-          <a href="/destinos">Destinos</a>
-          <a href="/paquete">Tu Paquete</a>
+          <NavLink to="/" end>Inicio</NavLink>
+          <NavLink to="/destinos">Destinos</NavLink>
+          <NavLink to="/paquete">Tu Paquete</NavLink>
           <a href="/ayuda">Ayuda</a>
         </nav>
 
