@@ -946,3 +946,47 @@ body{
 }
 .nav-drop__menu a:hover{ background:#fff3f8; color:#c7185e; }
 
+/* ===== Estilos específicos de Tu Paquete ===== */
+.pkg-layout{
+  display:grid;
+  grid-template-columns: clamp(240px, 22vw, 300px) 1fr;
+  gap:18px;
+  margin-top:18px;
+  justify-content:center;
+}
+.card-ghost{
+  background:rgba(255,255,255,.9);
+  border:1px solid #ffffffaa;
+  border-radius:20px;
+  box-shadow:0 14px 36px #00000012;
+  overflow:hidden;
+}
+.cart{ padding:20px 22px; }
+.cart .empty{ color:#8a8a8a; }
+.total-row{ display:flex; justify-content:space-between; align-items:center; font-weight:800; margin:12px 0 14px; }
+.btn-contact{ display:block; text-align:center; background:#FFC61B; color:#1b1b1b; font-weight:800; border-radius:12px; padding:.85rem 1rem; }
+
+.accordion{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap:12px;
+  justify-content:center;
+}
+.acc{ border:1px solid #f1e6f5; border-radius:18px; background:#fff; overflow:hidden; }
+.acc__head{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px; font-weight:800; cursor:pointer; }
+.acc__body{ padding:12px 20px 16px 14px; max-height:66vh; overflow:auto; box-sizing:border-box; scrollbar-gutter:stable both-edges; }
+
+.pill{ background:#ff4b86; color:#fff; border-radius:12px; padding:12px; margin:10px 0; box-shadow:0 8px 18px #00000015; }
+.pill .line1{ font-weight:800; }
+.pill .sub{ font-size:.85rem; opacity:.95; text-decoration:underline; display:inline-block; margin-top:2px; }
+.pill .badge-dst{ background:#fff; color:#ff4b86; border-radius:7px; padding:2px 6px; font-size:.8rem; font-weight:800; margin-left:6px; }
+.pill .actions{ display:flex; gap:8px; justify-content:flex-end; }
+.pill .btn-add,.pill .btn-remove,.pill .btn-ok,.pill .btn-x{
+  border:0; border-radius:8px; cursor:pointer; padding:.34rem .64rem; font-weight:800; color:#fff;
+}
+.pill .btn-add,.pill .btn-ok{ background:#38c793; }
+.pill .btn-remove,.pill .btn-x{ background:#c73c6b; }
+.pill .price{ text-align:right; font-weight:800; }
+
+@media (max-width:1100px){ .accordion{ grid-template-columns:repeat(2,minmax(260px,1fr)); } }
+@media (max-width:780px){ .pkg-layout{ grid-template-columns:1fr; } .accordion{ grid-template-columns:1fr; } }
