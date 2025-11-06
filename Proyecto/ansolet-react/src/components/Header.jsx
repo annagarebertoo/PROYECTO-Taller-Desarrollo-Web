@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ onOpenLogin, onOpenRegister }) {
   return (
     <header className="site-header">
       <div className="container nav">
@@ -17,11 +17,33 @@ function Header() {
 
         <div className="right-nav">
           <span className="minor">Idioma ES | USD</span>
-          <a className="btn btn-login" href="#">Iniciar sesión</a>
-          <a className="btn btn-register" href="#">Registrarse</a>
+
+          {/* Botones que abren los modales */}
+          <a
+            className="btn btn-login"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onOpenLogin?.(); // Llama a la función pasada desde App.jsx
+            }}
+          >
+            Iniciar sesión
+          </a>
+
+          <a
+            className="btn btn-register"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onOpenRegister?.(); // Llama a la función pasada desde App.jsx
+            }}
+          >
+            Registrarse
+          </a>
         </div>
       </div>
     </header>
   );
 }
+
 export default Header;
