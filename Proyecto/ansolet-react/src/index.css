@@ -990,3 +990,189 @@ body{
 
 @media (max-width:1100px){ .accordion{ grid-template-columns:repeat(2,minmax(260px,1fr)); } }
 @media (max-width:780px){ .pkg-layout{ grid-template-columns:1fr; } .accordion{ grid-template-columns:1fr; } }
+/* === FIX HEADER alineado === */
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* === Botón “Agregar productos” === */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-drop__btn {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #333;
+}
+
+.nav-drop__btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* === Menú desplegable === */
+.nav-drop__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 0.4rem;
+  min-width: 200px;
+  display: none;
+  z-index: 1000;
+}
+
+.nav-drop__menu.is-open {
+  display: block;
+}
+
+.nav-drop__menu a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  text-decoration: none;
+  color: #333;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.nav-drop__menu a:hover {
+  background: #f7f7f7;
+}
+
+/* === Ajuste responsivo === */
+@media (max-width: 850px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+}
+/* ======= HEADER LAYOUT FIX ======= */
+.site-header .nav{
+  display:flex;
+  align-items:center;
+  gap: 1.2rem;
+  /* separa claramente el logo del resto */
+  padding: .4rem 0;
+}
+
+/* Logo bien a la izquierda sin que se pegue a “Inicio” */
+.brand{
+  display:inline-flex;
+  align-items:center;
+  margin-right: .5rem;   /* separa del primer link */
+}
+.logo{ height: 40px; width:auto; display:block; }
+
+/* Menú principal centrado visualmente */
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap: 1.4rem;
+}
+
+/* Bloque derecho: ponemos “Idioma …” entre menú y botones y
+   empujamos los botones al extremo derecho */
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-left: auto;
+  margin-right: 2rem; /* ⬅️ nuevo: empuja todo el bloque a la derecha */
+}
+
+
+.lang-chip{
+  white-space: nowrap;
+  color:#6b6b6b;
+  font-weight:600;
+}
+
+.auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 0.4rem; /* ← antes era 0.4rem, ahora les da más espacio */
+}
+
+
+/* ======= Dropdown Agregar productos ======= */
+.nav-dropdown{ position:relative; }
+.nav-drop__btn{
+  background:#fff;
+  border:1px solid #eee;
+  padding:.45rem .7rem;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition: background .2s, box-shadow .2s;
+}
+.nav-drop__btn:hover{ background:#f7f7f7; }
+
+.nav-drop__menu{
+  position:absolute; top: calc(100% + 6px); left:0;
+  min-width: 220px;
+  background:#fff;
+  border:1px solid #eaeaea;
+  border-radius:10px;
+  padding:.35rem;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  display:none;
+  z-index:1000;
+}
+.nav-drop__menu.is-open{ display:block; }
+.nav-drop__menu a{
+  display:block;
+  padding:.55rem .7rem;
+  border-radius:8px;
+  color:#333; text-decoration:none; font-weight:600;
+}
+.nav-drop__menu a:hover{ background:#f5f5f5; }
+
+/* Responsive: mantiene todo en una sola línea en desktop
+   y evita superposiciones en tablet */
+@media (max-width: 980px){
+  .main-nav{ gap:1rem; }
+  .site-header .nav{ flex-wrap:wrap; }
+  .right-nav{ margin-left:0; }
+}
+/* ===== FIX header: más aire entre dropdown e Idioma/botones ===== */
+.site-header .right-nav{
+  margin-left: auto !important;   /* empuja el bloque a la derecha */
+  padding-left: 4.0rem !important;/* espacio entre 'Agregar productos' e 'Idioma' */
+  gap: 1.1rem !important;          /* separa Idioma de los botones */
+}
+
+
+/* Mover SOLO la imagen del logo al extremo izquierdo */
+.site-header .brand .logo{
+  position: relative;
+  left: -60px;           /* si todavía ves espacio, probá -30px o -40px */
+  display: block;        /* evita espacios extra de inline-img */
+  margin: 0;             /* por si hay márgenes del navegador */
+  padding: 0;
+}
+
