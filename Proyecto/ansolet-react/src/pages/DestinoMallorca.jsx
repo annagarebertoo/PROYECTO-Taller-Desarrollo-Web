@@ -1,4 +1,4 @@
-// src/pages/DestinoMaldivas.jsx
+// src/pages/DestinoMallorca.jsx
 import DestinationPage from "../components/DestinationPage";
 import "./Destinos.css";
 import "../index.css";
@@ -7,50 +7,51 @@ export default function DestinoMallorca() {
   return (
     <DestinationPage
       config={{
-        slug: "maldivas",
-        title: "Maldivas",
-        priceChip: "Desde US$ 2.599",
-        bestTimeChip: "Mejor época: Dic–Abr",
-        heroImage: "/imagenes/Islas-Maldivas-1.jpg",
+        slug: "mallorca",
+        title: "Mallorca",
+        priceChip: "Desde US$ 1.499",
+        bestTimeChip: "Mejor época: May–Sep",
+        heroImage: "/imagenes/img.jpg",
         about: {
-          heading: "¿Por qué elegir Maldivas?",
+          heading: "¿Por qué elegir Mallorca?",
           paragraphs: [
-            "Aguas turquesa, arrecifes de coral y villas sobre el mar hacen de Maldivas un destino soñado.",
-            "Ideal para lunas de miel, relax y snorkel. Nuestros paquetes incluyen vuelos, hotel y traslados en lancha o hidroavión."
+            "Mallorca combina calas de agua turquesa, pueblos de piedra y naturaleza en la Serra de Tramuntana.",
+            "Es ideal para quienes buscan playas, gastronomía mediterránea y rutas escénicas en auto o bicicleta. Palma sorprende con su catedral gótica frente al mar."
           ]
         },
         gallery: [
-          "/imagenes/maldivasextra1.jpeg",
-          "/imagenes/maldivasextra2.jpg",
-          "/imagenes/maldivasextra3.jpg"
+          "/imagenes/mallorcaextra1.jpeg",
+          "/imagenes/mallorcaextra2.jpg",
+          "/imagenes/mallorcaextra3.jpg"
         ],
         highlights: [
-          "Snorkel safari en arrecifes (tortugas y peces multicolor).",
-          "Cena romántica en la playa.",
-          "Paseo en hidroavión sobre atolones."
+          "Visitar las Cuevas del Drach y su concierto subterráneo.",
+          "Recorrer la Serra de Tramuntana: Valldemossa, Deià y Sóller.",
+          "Calas como Caló des Moro y Cala Varques.",
+          "Paseo por el casco histórico de Palma y su catedral."
         ],
         hotels: [
-          "<strong>Soneva Jani – Overwater Villas</strong> · 5★",
-          "<strong>Riu Palace Maldivas</strong> · 5★",
-          "<strong>Sun Siyam Iru Fushi</strong> · 5★"
+          "<strong>Zafiro Palace Alcudia</strong> · 5★",
+          "<strong>Hotel Nixe Palace</strong> · 5★",
+          "<strong>Iberostar Selection Playa de Palma</strong> · 5★"
         ],
         sidebar: {
           datos: [
-            "Moneda: Rufiyaa (aceptan USD en resorts).",
-            "Visado: exención turística para estancias cortas.",
-            "Traslados: lancha rápida o hidroavión.",
-            "Clima: tropical; temporada seca Dic–Abr."
+            "Moneda: Euro.",
+            "Transporte: auto de alquiler recomendado para explorar calas.",
+            "Conexiones: vuelos directos a Palma (PMI) desde principales ciudades europeas.",
+            "Clima: veranos cálidos y secos; primavera/otoño templados."
           ],
           incluye: [
-            "Traslado aeropuerto ↔ hotel.",
-            "Excursión snorkel safari.",
+            "Traslado aeropuerto ↔ hotel o auto de alquiler.",
+            "Entrada a Cuevas del Drach (opcional).",
             "Seguro de viaje."
           ]
         },
         faq: [
-          { q: "¿Cuántas noches recomiendan?", a: "Entre 5 y 7 noches es ideal para combinar relax y actividades." },
-          { q: "¿Conviene media pensión o all inclusive?", a: "En islas privadas suele convenir incluir comidas; depende del hotel." },
-          { q: "¿Se necesita certificado de vacunas?", a: "No para turistas de corta estadía; recomendamos seguro de viaje." }
+          { q: "¿Cuántas noches recomiendan?", a: "Entre 4 y 7 noches para combinar Palma, Tramuntana y calas." },
+          { q: "¿Hace falta auto?", a: "No es imprescindible en Palma, pero sí para llegar cómodo a calas y pueblos." },
+          { q: "¿Las calas son de acceso libre?", a: "La mayoría sí, con caminatas cortas; llevá calzado cómodo y agua." }
         ]
       }}
     />

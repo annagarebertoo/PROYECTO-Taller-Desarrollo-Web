@@ -1,4 +1,4 @@
-// src/pages/DestinoMaldivas.jsx
+// src/pages/DestinoParis.jsx
 import DestinationPage from "../components/DestinationPage";
 import "./Destinos.css";
 import "../index.css";
@@ -7,50 +7,51 @@ export default function DestinoParis() {
   return (
     <DestinationPage
       config={{
-        slug: "maldivas",
-        title: "Maldivas",
-        priceChip: "Desde US$ 2.599",
-        bestTimeChip: "Mejor época: Dic–Abr",
-        heroImage: "/imagenes/Islas-Maldivas-1.jpg",
+        slug: "paris",
+        title: "París",
+        priceChip: "Desde US$ 1.299",
+        bestTimeChip: "Mejor época: Abr–Jun, Sep–Oct",
+        heroImage: "/imagenes/paris.jpg",
         about: {
-          heading: "¿Por qué elegir Maldivas?",
+          heading: "¿Por qué elegir París?",
           paragraphs: [
-            "Aguas turquesa, arrecifes de coral y villas sobre el mar hacen de Maldivas un destino soñado.",
-            "Ideal para lunas de miel, relax y snorkel. Nuestros paquetes incluyen vuelos, hotel y traslados en lancha o hidroavión."
+            "La “Ville Lumière” combina arte de clase mundial, arquitectura icónica y bistrós con encanto.",
+            "Entre paseos por el Sena, museos como el Louvre y barrios bohemios como Montmartre, París invita a caminar, perderse y disfrutar su gastronomía y cafés históricos."
           ]
         },
         gallery: [
-          "/imagenes/maldivasextra1.jpeg",
-          "/imagenes/maldivasextra2.jpg",
-          "/imagenes/maldivasextra3.jpg"
+          "/imagenes/parisextra1.jpg",
+          "/imagenes/parisextra2.jpg",
+          "/imagenes/parisextra3.jpg"
         ],
         highlights: [
-          "Snorkel safari en arrecifes (tortugas y peces multicolor).",
-          "Cena romántica en la playa.",
-          "Paseo en hidroavión sobre atolones."
+          "Subir a la Torre Eiffel o admirarla desde Trocadéro.",
+          "Museos Louvre y Musée d’Orsay.",
+          "Paseo en barco por el Sena y Île de la Cité.",
+          "Atardecer en Montmartre y la Basílica del Sacré-Cœur."
         ],
         hotels: [
-          "<strong>Soneva Jani – Overwater Villas</strong> · 5★",
-          "<strong>Riu Palace Maldivas</strong> · 5★",
-          "<strong>Sun Siyam Iru Fushi</strong> · 5★"
+          "<strong>Le Bristol Paris</strong> · 5★",
+          "<strong>Hotel Lutetia</strong> · 5★",
+          "<strong>Pullman Paris Tour Eiffel</strong> · 4★"
         ],
         sidebar: {
           datos: [
-            "Moneda: Rufiyaa (aceptan USD en resorts).",
-            "Visado: exención turística para estancias cortas.",
-            "Traslados: lancha rápida o hidroavión.",
-            "Clima: tropical; temporada seca Dic–Abr."
+            "Moneda: Euro.",
+            "Transporte: metro y RER conectan toda la ciudad.",
+            "Conexiones: aeropuertos CDG y ORY; trenes TGV.",
+            "Clima: primaveras templadas; veranos cálidos; inviernos fríos."
           ],
           incluye: [
-            "Traslado aeropuerto ↔ hotel.",
-            "Excursión snorkel safari.",
+            "Traslado aeropuerto ↔ hotel o pase de transporte.",
+            "Entrada al Louvre o subida Torre Eiffel (opcional).",
             "Seguro de viaje."
           ]
         },
         faq: [
-          { q: "¿Cuántas noches recomiendan?", a: "Entre 5 y 7 noches es ideal para combinar relax y actividades." },
-          { q: "¿Conviene media pensión o all inclusive?", a: "En islas privadas suele convenir incluir comidas; depende del hotel." },
-          { q: "¿Se necesita certificado de vacunas?", a: "No para turistas de corta estadía; recomendamos seguro de viaje." }
+          { q: "¿Cuántas noches recomiendan?", a: "Entre 3 y 5 noches para cubrir lo esencial y una excursión." },
+          { q: "¿Conviene comprar el Paris Museum Pass?", a: "Si planeás visitar 2–3 museos por día, suele amortizarse y evita filas." },
+          { q: "¿En qué zona conviene alojarse?", a: "Barrios 1–7 para estar cerca de atractivos; 9 y 11 para propuestas trendy." }
         ]
       }}
     />

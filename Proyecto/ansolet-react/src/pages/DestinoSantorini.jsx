@@ -1,4 +1,4 @@
-// src/pages/DestinoMaldivas.jsx
+// src/pages/DestinoSantorini.jsx
 import DestinationPage from "../components/DestinationPage";
 import "./Destinos.css";
 import "../index.css";
@@ -7,50 +7,52 @@ export default function DestinoSantorini() {
   return (
     <DestinationPage
       config={{
-        slug: "maldivas",
-        title: "Maldivas",
-        priceChip: "Desde US$ 2.599",
-        bestTimeChip: "Mejor época: Dic–Abr",
-        heroImage: "/imagenes/Islas-Maldivas-1.jpg",
+        slug: "santorini",
+        title: "Santorini",
+        priceChip: "Desde US$ 1.399",
+        bestTimeChip: "Mejor época: May–Oct",
+        heroImage: "/imagenes/11.jpg",
         about: {
-          heading: "¿Por qué elegir Maldivas?",
+          heading: "¿Por qué elegir Santorini?",
           paragraphs: [
-            "Aguas turquesa, arrecifes de coral y villas sobre el mar hacen de Maldivas un destino soñado.",
-            "Ideal para lunas de miel, relax y snorkel. Nuestros paquetes incluyen vuelos, hotel y traslados en lancha o hidroavión."
+            "Icono de las Cícladas: casas blancas, cúpulas azules y vistas a la caldera volcánica.",
+            "Perfecta para atardeceres inolvidables, playas únicas (roja y negra), gastronomía mediterránea y caminatas escénicas entre Fira y Oia."
           ]
         },
         gallery: [
-          "/imagenes/maldivasextra1.jpeg",
-          "/imagenes/maldivasextra2.jpg",
-          "/imagenes/maldivasextra3.jpg"
+          "/imagenes/santoriniextra1.jpg",
+          "/imagenes/santoriniextra2.jpg",
+          "/imagenes/santoriniextra3.jpg"
         ],
         highlights: [
-          "Snorkel safari en arrecifes (tortugas y peces multicolor).",
-          "Cena romántica en la playa.",
-          "Paseo en hidroavión sobre atolones."
+          "Puesta de sol en Oia y paseo por Fira.",
+          "Camino Fira → Oia bordeando la caldera.",
+          "Playas Red Beach, Perissa (arena negra) y Kamari.",
+          "Sitio arqueológico de Akrotiri y bodegas locales (vino Assyrtiko).",
+          "Excursión en barco a Nea Kameni y aguas termales."
         ],
         hotels: [
-          "<strong>Soneva Jani – Overwater Villas</strong> · 5★",
-          "<strong>Riu Palace Maldivas</strong> · 5★",
-          "<strong>Sun Siyam Iru Fushi</strong> · 5★"
+          "<strong>Canaves Oia Suites</strong> · 5★",
+          "<strong>Katikies Santorini</strong> · 5★",
+          "<strong>Grace Hotel Santorini</strong> · 5★"
         ],
         sidebar: {
           datos: [
-            "Moneda: Rufiyaa (aceptan USD en resorts).",
-            "Visado: exención turística para estancias cortas.",
-            "Traslados: lancha rápida o hidroavión.",
-            "Clima: tropical; temporada seca Dic–Abr."
+            "Moneda: Euro.",
+            "Transporte: buses locales; muy popular el ATV/quad y autos.",
+            "Conexiones: ferry desde Atenas y otras islas; aeropuerto JTR.",
+            "Clima: veranos secos y calurosos; primaveras y otoños templados."
           ],
           incluye: [
-            "Traslado aeropuerto ↔ hotel.",
-            "Excursión snorkel safari.",
+            "Traslado puerto/aeropuerto ↔ hotel.",
+            "Excursión en barco por la caldera (opcional) y degustación de vinos.",
             "Seguro de viaje."
           ]
         },
         faq: [
-          { q: "¿Cuántas noches recomiendan?", a: "Entre 5 y 7 noches es ideal para combinar relax y actividades." },
-          { q: "¿Conviene media pensión o all inclusive?", a: "En islas privadas suele convenir incluir comidas; depende del hotel." },
-          { q: "¿Se necesita certificado de vacunas?", a: "No para turistas de corta estadía; recomendamos seguro de viaje." }
+          { q: "¿Cuántas noches recomiendan?", a: "Entre 3 y 5 noches para playas, bodegas y excursión en barco." },
+          { q: "¿Dónde conviene alojarse?", a: "Oia y Imerovigli para vistas; Fira para estar bien conectado y con más movida." },
+          { q: "¿Hace falta reservar con mucha anticipación?", a: "En temporada alta (jun–sep) sí: hoteles, restaurantes y excursiones." }
         ]
       }}
     />

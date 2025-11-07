@@ -1,4 +1,4 @@
-// src/pages/DestinoMaldivas.jsx
+// src/pages/DestinoNuevaYork.jsx
 import DestinationPage from "../components/DestinationPage";
 import "./Destinos.css";
 import "../index.css";
@@ -7,50 +7,52 @@ export default function DestinoNuevaYork() {
   return (
     <DestinationPage
       config={{
-        slug: "maldivas",
-        title: "Maldivas",
-        priceChip: "Desde US$ 2.599",
-        bestTimeChip: "Mejor época: Dic–Abr",
-        heroImage: "/imagenes/Islas-Maldivas-1.jpg",
+        slug: "nueva-york",
+        title: "Nueva York",
+        priceChip: "Desde US$ 1.499",
+        bestTimeChip: "Mejor época: Abr–Jun, Sep–Nov",
+        heroImage: "/imagenes/nuevayork.jpg",
         about: {
-          heading: "¿Por qué elegir Maldivas?",
+          heading: "¿Por qué elegir Nueva York?",
           paragraphs: [
-            "Aguas turquesa, arrecifes de coral y villas sobre el mar hacen de Maldivas un destino soñado.",
-            "Ideal para lunas de miel, relax y snorkel. Nuestros paquetes incluyen vuelos, hotel y traslados en lancha o hidroavión."
+            "La ciudad que nunca duerme: museos de talla mundial, barrios con identidad, gastronomía de todos los rincones y espectáculos imperdibles en Broadway.",
+            "Entre rascacielos, parques y el río Hudson, NYC se vive caminando y en subway."
           ]
         },
         gallery: [
-          "/imagenes/maldivasextra1.jpeg",
-          "/imagenes/maldivasextra2.jpg",
-          "/imagenes/maldivasextra3.jpg"
+          "/imagenes/nuevayorkextra1 (2).jpg",
+          "/imagenes/nuevayorkextra1.jpg",
+          "/imagenes/nuevayorkextra2.jpg"
         ],
         highlights: [
-          "Snorkel safari en arrecifes (tortugas y peces multicolor).",
-          "Cena romántica en la playa.",
-          "Paseo en hidroavión sobre atolones."
+          "Miradores Top of the Rock o Edge y paseo por High Line.",
+          "Central Park, Times Square y Puente de Brooklyn.",
+          "Museos Met, MoMA y American Museum of Natural History.",
+          "Ferry a la Estatua de la Libertad y Ellis Island."
         ],
         hotels: [
-          "<strong>Soneva Jani – Overwater Villas</strong> · 5★",
-          "<strong>Riu Palace Maldivas</strong> · 5★",
-          "<strong>Sun Siyam Iru Fushi</strong> · 5★"
+          "<strong>The Plaza</strong> · 5★",
+          "<strong>Park Lane New York</strong> · 5★",
+          "<strong>CitizenM Times Square</strong> · 4★"
         ],
         sidebar: {
           datos: [
-            "Moneda: Rufiyaa (aceptan USD en resorts).",
-            "Visado: exención turística para estancias cortas.",
-            "Traslados: lancha rápida o hidroavión.",
-            "Clima: tropical; temporada seca Dic–Abr."
+            "Moneda: Dólar estadounidense (USD).",
+            "Transporte: subway 24/7 y buses; pago con OMNY.",
+            "Conexiones: aeropuertos JFK, LGA y EWR.",
+            "Clima: inviernos fríos; veranos calurosos; otoño y primavera templados."
           ],
           incluye: [
-            "Traslado aeropuerto ↔ hotel.",
-            "Excursión snorkel safari.",
+            "Traslado aeropuerto ↔ hotel o MetroCard/OMNY precargado.",
+            "CityPASS o entradas a miradores y museos (opcional).",
             "Seguro de viaje."
           ]
         },
         faq: [
-          { q: "¿Cuántas noches recomiendan?", a: "Entre 5 y 7 noches es ideal para combinar relax y actividades." },
-          { q: "¿Conviene media pensión o all inclusive?", a: "En islas privadas suele convenir incluir comidas; depende del hotel." },
-          { q: "¿Se necesita certificado de vacunas?", a: "No para turistas de corta estadía; recomendamos seguro de viaje." }
+          { q: "¿Cuántas noches recomiendan?", a: "Entre 4 y 6 noches para lo esencial + 1 excursión a otro barrio/borough." },
+          { q: "¿Conviene el CityPASS / Go City?", a: "Si planeás 2–3 atracciones por día, ahorrás y evitás filas en varias sedes." },
+          { q: "¿Dónde conviene alojarse?", a: "Midtown por ubicación; Lower Manhattan para paseos; Brooklyn para onda local." },
+          { q: "¿Propinas?", a: "Restaurantes 15–20%; bares USD 1–2 por bebida; hoteles/traslados según servicio." }
         ]
       }}
     />
