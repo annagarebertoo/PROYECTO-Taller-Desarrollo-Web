@@ -3,7 +3,7 @@ import DestinationPage from "../components/DestinationPage";
 import "./Destinos.css";
 import "../index.css";
 
-export default function DestinoMaldivas() {
+export default function DestinoParis() {
   return (
     <DestinationPage
       config={{
