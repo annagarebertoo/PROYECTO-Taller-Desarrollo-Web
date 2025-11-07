@@ -81,3 +81,63 @@
 @media (max-width: 640px){
   .destinos-grid { grid-template-columns: 1fr; }
 }
+
+/* ====== Detalle de destino (Maldivas) ====== */
+.page-destino{
+  position: relative;
+  min-height: 100dvh;
+}
+.page-destino::before{
+  content:"";
+  position: fixed; inset:0;
+  background:#fff;          /* fondo blanco, anulamos el hero global */
+  z-index:-1;
+}
+/* Header y footer planos en esta vista */
+.page-destino .site-header,
+.page-destino .site-footer{
+  background:#fff !important;
+  backdrop-filter:none !important;
+}
+
+/* Migas */
+.breadcrumb{ font-weight:600; color:#777; padding:14px 0 4px; font-size:.95rem; }
+.breadcrumb a{ color:#f24a8e; text-decoration:none; }
+.breadcrumb a:hover{ text-decoration:underline; }
+
+/* Hero destino */
+.dest-hero{ position:relative; border-radius:20px; overflow:hidden; box-shadow:0 20px 50px #0000001a; margin:10px 0 18px; min-height:320px; display:grid; align-items:end; }
+.dest-hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); filter:saturate(1.05); }
+.dest-hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55)); }
+.dest-hero__content{ position:relative; z-index:1; color:#fff; padding:20px; display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; }
+.dest-hero h1{ margin:0; font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:800; }
+.chip{ background:#ffffffe6; color:#c7185e; border-radius:999px; padding:.35rem .7rem; font-weight:800; font-size:.9rem; }
+.cta-row{ margin-left:auto; display:flex; gap:10px; }
+.btn-ghost{ background:#ffffffe6; color:#1b1b1b; border-radius:12px; font-weight:800; }
+
+/* Cuerpo */
+.dest-sect{ padding:8px 0 18px; }
+.dest-grid{ display:grid; gap:18px; grid-template-columns:1.2fr .8fr; }
+.card{ background:#fff; border:1px solid #f0e6f3; border-radius:16px; box-shadow:0 10px 24px #00000012; overflow:hidden; }
+.card__body{ padding:16px 18px; }
+.card h3{ margin:0 0 8px; font-size:1.2rem; }
+
+.list{ display:grid; gap:8px; margin:0; padding-left:1.1rem; }
+.gallery{ display:grid; gap:10px; grid-template-columns:repeat(3,1fr); }
+.gallery img{ width:100%; height:140px; object-fit:cover; border-radius:12px; box-shadow:0 6px 16px #00000012; }
+
+details{ background:#fff; border:1px solid #f0e6f3; border-radius:12px; padding:12px 14px; box-shadow:0 6px 16px #0000000f; }
+details + details{ margin-top:10px; }
+summary{ cursor:pointer; font-weight:800; color:#333; }
+
+/* Call-to-action de login/registro */
+.signin-card{ margin-top:10px; text-align:center; }
+.signin-card p{ margin:.2rem 0 .8rem; color:#555; }
+.signin-actions{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.signin-actions .btn{ border-radius:12px; font-weight:800; }
+
+/* Responsive */
+@media (max-width:960px){
+  .dest-grid{ grid-template-columns:1fr; }
+  .gallery{ grid-template-columns:repeat(2,1fr); }
+}

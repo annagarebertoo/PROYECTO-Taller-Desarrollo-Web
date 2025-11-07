@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 // Páginas
 import Home from './pages/Home'
 import Destinos from './pages/Destinos'
+import DestinoMaldivas from "./pages/DestinoMaldivas";
 import Vuelos from './pages/Vuelos'
 import Paquete from './pages/Paquete'
 import NotFound from './pages/NotFound'
@@ -33,6 +34,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/destinos" element={<Destinos />} />
+         <Route path="/destinos/maldivas" element={<DestinoMaldivas />} />
         <Route path="/vuelos" element={<Vuelos />} />
         <Route path="/paquete" element={<Paquete />} />
         <Route path="*" element={<NotFound />} />
