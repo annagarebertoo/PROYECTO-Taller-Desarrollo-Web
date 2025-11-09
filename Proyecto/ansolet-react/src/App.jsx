@@ -22,7 +22,7 @@ import NotFound from './pages/NotFound'
 import LoginModal from './components/LoginModal'
 import RegisterModal from './components/RegisterModal'
 
-// 🔽 Modales de “Agregar productos”
+// Modales de “Agregar productos”
 import AddFlightModal from './components/AddFlightModal'
 import AddDestinationModal from './components/AddDestinationModal'
 
@@ -35,9 +35,7 @@ export default function App() {
   const [addFlightOpen, setAddFlightOpen] = useState(false)
   const [addDestOpen, setAddDestOpen] = useState(false)
 
-  // ✅ Escuchar eventos globales disparados por TU Header:
-  //    window.dispatchEvent(new CustomEvent('open:addFlight'))
-  //    window.dispatchEvent(new CustomEvent('open:addDestination'))
+ 
   useEffect(() => {
     const openFlight = () => setAddFlightOpen(true)
     const openDest   = () => setAddDestOpen(true)
@@ -53,7 +51,7 @@ export default function App() {
 
   return (
     <>
-      {/* No toco tu Header. Solo le paso handlers de login/register */}
+      {/* handlers de login/register */}
       <Header
         onOpenLogin={() => setLoginOpen(true)}
         onOpenRegister={() => setRegOpen(true)}
@@ -79,7 +77,7 @@ export default function App() {
       <LoginModal   open={loginOpen} onClose={() => setLoginOpen(false)} />
       <RegisterModal open={regOpen}  onClose={() => setRegOpen(false)} />
 
-      {/* Modales de Agregar productos (vuelven a funcionar) */}
+      {/* Modales de Agregar productos */}
       <AddFlightModal      open={addFlightOpen} onClose={() => setAddFlightOpen(false)} />
       <AddDestinationModal open={addDestOpen}  onClose={() => setAddDestOpen(false)} />
     </>

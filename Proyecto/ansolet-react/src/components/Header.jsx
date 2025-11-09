@@ -42,7 +42,7 @@ function Header({ onOpenLogin, onOpenRegister }) {
           <NavLink to="/paquete">Tu Paquete</NavLink>
           <a href="/ayuda">Ayuda</a>
 
-          {/* Dropdown Agregar productos (NO TOCO NADA) */}
+          {/* Dropdown Agregar productos */}
           <div className="nav-dropdown">
             <button
               ref={dropBtnRef}
@@ -81,7 +81,7 @@ function Header({ onOpenLogin, onOpenRegister }) {
         <div className="right-nav">
           <span className="minor lang-chip">Idioma ES | USD</span>
 
-          {/* Botones que abren modales (SOLO ESTO AGREGO) */}
+          {/* Botones que abren modales */}
           <a
             className="btn btn-login"
             href="#"

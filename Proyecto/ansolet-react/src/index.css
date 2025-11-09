@@ -79,7 +79,7 @@ position: relative;
 }
 
 .main-nav a{
-  font-size:1rem;       /* ajustá si lo querés más grande */
+  font-size:1rem;       
   font-weight:600;
   text-decoration:none;
   color:#333;
@@ -308,7 +308,7 @@ position: relative;
 }
 
 .logo{
-  height:45px; /* ajustá según tu imagen */
+  height:45px; 
   width:auto;
   display:block;
 }
@@ -349,8 +349,7 @@ position: relative;
 }
 
 /* ===== Packs con degradé (#FF3DA4 arriba → #FF973D abajo) =====
-   (Mencionaste “horizontal”, pero especificaste “arriba/abajo”.
-    Uso vertical arriba→abajo; si lo querías horizontal, lo cambio.) */
+  */
 .offer{
   background: linear-gradient(180deg, #FF3DA4 0%, #FF973D 100%);
   color:white;
@@ -468,7 +467,7 @@ body{
 }
 .social-btn:hover{ transform: translateY(-1px); }
 
-/* Full width helper (ya usás .btn .btn-primary) */
+/* Full width helper  */
 .full{ width:100%; }
 
 
@@ -790,7 +789,7 @@ body{
   /* orden interno */
   display: flex;
   flex-direction: column;
-  min-height: 220px;    /* ajustá si querés más/menos alta */
+  min-height: 220px;    
 }
 
 /* badge arriba a la izquierda, sobre el fondo pero sin tapar el título */
@@ -1101,7 +1100,7 @@ body{
   align-items: center;
   gap: 0.9rem;
   margin-left: auto;
-  margin-right: 2rem; /* ⬅️ nuevo: empuja todo el bloque a la derecha */
+  margin-right: 2rem; /*  nuevo: empuja todo el bloque a la derecha */
 }
 
 
@@ -1170,9 +1169,13 @@ body{
 /* Mover SOLO la imagen del logo al extremo izquierdo */
 .site-header .brand .logo{
   position: relative;
-  left: -60px;           /* si todavía ves espacio, probá -30px o -40px */
+  left: -60px;           
   display: block;        /* evita espacios extra de inline-img */
-  margin: 0;             /* por si hay márgenes del navegador */
+  margin: 0;             
   padding: 0;
 }
+.search-card {
+  margin-bottom: 2rem;  
+}
+
 
