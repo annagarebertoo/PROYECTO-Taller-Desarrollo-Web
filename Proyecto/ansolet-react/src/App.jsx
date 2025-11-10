@@ -64,7 +64,7 @@ export default function App() {
         <Route path="/destinos/paris" element={<DestinoParis />} />
         <Route path="/destinos/egipto" element={<DestinoEgipto />} />
         <Route path="/destinos/mallorca" element={<DestinoMallorca />} />
-        <Route path="/destinos/nueva-york" element={<DestinoNuevaYork />} />
+        <Route path="/destinos/nuevayork" element={<DestinoNuevaYork />} />
         <Route path="/destinos/santorini" element={<DestinoSantorini />} />
         <Route path="/vuelos" element={<Vuelos />} />
         <Route path="/paquete" element={<Paquete />} />

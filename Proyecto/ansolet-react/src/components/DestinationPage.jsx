@@ -121,31 +121,7 @@ export default function DestinationPage({ config }) {
           </section>
         )}
 
-        {/* Login / registro */}
-        <section className="dest-sect">
-          <div className="card signin-card">
-            <div className="card__body">
-              <h3>¿Ya tenés cuenta?</h3>
-              <p>Iniciá sesión para <strong>guardar</strong> este destino y recibir <strong>alertas</strong> de precio.</p>
-              <div className="signin-actions">
-                <button
-                  className="btn btn-login"
-                  type="button"
-                  onClick={() => document.getElementById("loginModal")?.classList.add("is-open")}
-                >
-                  Iniciar sesión
-                </button>
-                <button
-                  className="btn btn-register"
-                  type="button"
-                  onClick={() => document.getElementById("registerModal")?.classList.add("is-open")}
-                >
-                  Registrarse
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+       
       </div>
     </main>
   );
